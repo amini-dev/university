@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amini University</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/dependencies/select2.min.css">
+    <link rel="stylesheet" href="css/dependencies/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body class="font-irYekan">
+    <header class="fixed z-10 bg-gradient-to-b from-sky-800 w-full">
+        <div class="container py-3">
+            <div class="flex gap-2 items-center justify-between">
+                <div><img src="images/logo.png" alt="logo" class="w-12"></div>
+                <div>
+                    <input type="text" placeholder="جست و جو ..."
+                        class="bg-gray-200 placeholder-gray-800 hidden md:block py-3 px-4 text-xs rounded-xl border-none outline-none w-24 md:w-80" />
+                </div>
+                <div class="flex gap-4 items-center">
+                    <label class="flex bg-gray-200 rounded-xl">
+                        <!-- this hidden checkbox controls the state -->
+                        <input type="checkbox" class="theme-controller hidden" value="dark" />
+                        <!-- sun icon -->
+                        <i class="fa-regular fa-sun-bright p-3"></i>
+                        <!-- moon icon -->
+                        <i class="fa-regular fa-moon-stars p-3"></i>
+                    </label>
+                    <select class="bg-gray-200" id="lang" name="state">
+                        <option value="fa">فارسی</option>
+                        <option value="en">انگلیسی</option>
+                    </select>
+                    <div class="flex">
+                        <a href="#"
+                            class="flex items-center gap-2 bg-gray-200 text-gray-800 pl-6 py-3 px-3 text-xs rounded-xl">
+                            <span>ورود</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 bg-blue-500 text-white -mr-5 py-3 px-3 text-xs rounded-xl">
+                            <span>ثبت نام</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-add" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                                <path
+                                    d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="dark:bg-slate-900">
+        <section class="relative group">
+            <div class="h-[calc(100vh-81px)]">
+                <div class="swiper head-slider h-full">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <img src="images/001.jpg" alt="" class="w-full">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/002.jpg" alt="" class="w-full">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/003.jpg" alt="" class="w-full">
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- If we need scrollbar -->
+                    <div class="swiper-scrollbar"></div>
+                </div>
+            </div>
+        </section>
+        <section class="mt-20">
+            <div class="container">
+                <div class="flex items-center justify-between bg-gradient-to-l from-gray-200 to-transparent p-3 dark:bg-blue-500 rounded-xl">
+                    <div class="flex items-center gap-x-3">
+                        <div class="flex items-center gap-1">
+                            <span class="hidden sm:inline-block w-2 h-2 bg-red-500 rounded-full"></span>
+                            <span class="hidden sm:inline-block w-3 h-3 bg-red-500 rounded-full"></span>
+                        </div>
+                        <h2 class="font-rokh text-2xl/normal font-bold">اطلاعیه ها</h2>
+                    </div>
+                    <a href="#" class="flex items-center gap-x-2 p-3 hover">
+                        <span>آرشیو اطلاعیه ها</span>
+                        <i class="fa-solid fa-arrow-left-to-arc text-slate-100 p-2 bg-gray-300 rounded-tl-xl rounded-bl-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mt-20">
+            <div class="container">
+                <div class="flex items-center justify-between bg-gradient-to-l from-gray-200 to-transparent p-3 rounded-xl">
+                    <div class="flex items-baseline gap-x-3">
+                    <div class="flex items-center gap-1">
+                            <span class="hidden sm:inline-block w-2 h-2 bg-sky-500 rounded-full"></span>
+                            <span class="hidden sm:inline-block w-3 h-3 bg-sky-500 rounded-full"></span>
+                        </div>
+                        <h2 class="font-rokh text-2xl font-bold">اخبار</h2>
+                    </div>
+                    <a href="#" class="flex items-center p-3 hover">
+                        <span class="rounded-tl-xl rounded-bl-xl">آرشیو اخبار</span>
+                        <i class="fa-solid fa-arrow-left-to-arc text-white p-2 bg-zinc-300 rounded-tl-xl rounded-bl-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/dependencies/jquery.min.js"></script>
+    <script src="js/dependencies/select2.min.js"></script>
+    <script src="js/dependencies/swiper-bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/dependencies/fontAwesome.css">
+</body>
+
+</html>

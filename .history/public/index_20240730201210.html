@@ -1,0 +1,629 @@
+.emit("sliderFirstMove",p)}if((new Date).getTime(),r.isMoved&&r.allowThresholdMove&&w!==s.touchesDirection&&S&&T&&Math.abs(v)>=1)return Object.assign(a,{startX:u,startY:f,currentX:u,currentY:f,startTranslate:r.currentTranslate}),r.loopSwapReset=!0,void(r.startTranslate=r.currentTranslate);s.emit("sliderMove",p),r.isMoved=!0,r.currentTranslate=v+r.startTranslate;let b=!0,y=n.resistanceRatio;if(n.touchReleaseOnEdges&&(y=0),v>0?(S&&T&&r.allowThresholdMove&&r.currentTranslate>(n.centeredSlides?s.minTranslate()-s.slidesSizesGrid[s.activeIndex+1]:s.minTranslate())&&s.loopFix({direction:"prev",setTranslate:!0,activeSlideIndex:0}),r.currentTranslate>s.minTranslate()&&(b=!1,n.resistance&&(r.currentTranslate=s.minTranslate()-1+(-s.minTranslate()+r.startTranslate+v)**y))):v<0&&(S&&T&&r.allowThresholdMove&&r.currentTranslate<(n.centeredSlides?s.maxTranslate()+s.slidesSizesGrid[s.slidesSizesGrid.length-1]:s.maxTranslate())&&s.loopFix({direction:"next",setTranslate:!0,activeSlideIndex:s.slides.length-("auto"===n.slidesPerView?s.slidesPerViewDynamic():Math.ceil(parseFloat(n.slidesPerView,10)))}),r.currentTranslate<s.maxTranslate()&&(b=!1,n.resistance&&(r.currentTranslate=s.maxTranslate()+1-(s.maxTranslate()-r.startTranslate-v)**y))),b&&(p.preventedByNestedSwiper=!0),!s.allowSlideNext&&"next"===s.swipeDirection&&r.currentTranslate<r.startTranslate&&(r.currentTranslate=r.startTranslate),!s.allowSlidePrev&&"prev"===s.swipeDirection&&r.currentTranslate>r.startTranslate&&(r.currentTranslate=r.startTranslate),s.allowSlidePrev||s.allowSlideNext||(r.currentTranslate=r.startTranslate),n.threshold>0){if(!(Math.abs(v)>n.threshold||r.allowThresholdMove))return void(r.currentTranslate=r.startTranslate);if(!r.allowThresholdMove)return r.allowThresholdMove=!0,a.startX=a.currentX,a.startY=a.currentY,r.currentTranslate=r.startTranslate,void(a.diff=s.isHorizontal()?a.currentX-a.startX:a.currentY-a.startY)}n.followFinger&&!n.cssMode&&((n.freeMode&&n.freeMode.enabled&&s.freeMode||n.watchSlidesProgress)&&(s.updateActiveIndex(),s.updateSlidesClasses()),n.freeMode&&n.freeMode.enabled&&s.freeMode&&s.freeMode.onTouchMove(),s.updateProgress(r.currentTranslate),s.setTranslate(r.currentTranslate))}function F(e){const t=this,s=t.touchEventsData;let i,r=e;r.originalEvent&&(r=r.originalEvent);if("touchend"===r.type||"touchcancel"===r.type){if(i=[...r.changedTouches].filter((e=>e.identifier===s.touchId))[0],!i||i.identifier!==s.touchId)return}else{if(null!==s.touchId)return;if(r.pointerId!==s.pointerId)return;i=r}if(["pointercancel","pointerout","pointerleave","contextmenu"].includes(r.type)){if(!(["pointercancel","contextmenu"].includes(r.type)&&(t.browser.isSafari||t.browser.isWebView)))return}s.pointerId=null,s.touchId=null;const{params:n,touches:l,rtlTranslate:d,slidesGrid:c,enabled:p}=t;if(!p)return;if(!n.simulateTouch&&"mouse"===r.pointerType)return;if(s.allowTouchCallbacks&&t.emit("touchEnd",r),s.allowTouchCallbacks=!1,!s.isTouched)return s.isMoved&&n.grabCursor&&t.setGrabCursor(!1),s.isMoved=!1,void(s.startMoving=!1);n.grabCursor&&s.isMoved&&s.isTouched&&(!0===t.allowSlideNext||!0===t.allowSlidePrev)&&t.setGrabCursor(!1);const u=o(),f=u-s.touchStartTime;if(t.allowClick){const e=r.path||r.composedPath&&r.composedPath();t.updateClickedSlide(e&&e[0]||r.target,e),t.emit("tap click",r),f<300&&u-s.lastClickTime<300&&t.emit("doubleTap doubleClick",r)}if(s.lastClickTime=o(),a((()=>{t.destroyed||(t.allowClick=!0)})),!s.isTouched||!s.isMoved||!t.swipeDirection||0===l.diff&&!s.loopSwapReset||s.currentTranslate===s.startTranslate&&!s.loopSwapReset)return s.isTouched=!1,s.isMoved=!1,void(s.startMoving=!1);let h;if(s.isTouched=!1,s.isMoved=!1,s.startMoving=!1,h=n.followFinger?d?t.translate:-t.translate:-s.currentTranslate,n.cssMode)return;if(n.freeMode&&n.freeMode.enabled)return void t.freeMode.onTouchEnd({currentPos:h});const m=h>=-t.maxTranslate()&&!t.params.loop;let v=0,g=t.slidesSizesGrid[0];for(let e=0;e<c.length;e+=e<n.slidesPerGroupSkip?1:n.slidesPerGroup){const t=e<n.slidesPerGroupSkip-1?1:n.slidesPerGroup;void 0!==c[e+t]?(m||h>=c[e]&&h<c[e+t])&&(v=e,g=c[e+t]-c[e]):(m||h>=c[e])&&(v=e,g=c[c.length-1]-c[c.length-2])}let w=null,S=null;n.rewind&&(t.isBeginning?S=n.virtual&&n.virtual.enabled&&t.virtual?t.virtual.slides.length-1:t.slides.length-1:t.isEnd&&(w=0));const T=(h-c[v])/g,b=v<n.slidesPerGroupSkip-1?1:n.slidesPerGroup;if(f>n.longSwipesMs){if(!n.longSwipes)return void t.slideTo(t.activeIndex);"next"===t.swipeDirection&&(T>=n.longSwipesRatio?t.slideTo(n.rewind&&t.isEnd?w:v+b):t.slideTo(v)),"prev"===t.swipeDirection&&(T>1-n.longSwipesRatio?t.slideTo(v+b):null!==S&&T<0&&Math.abs(T)>n.longSwipesRatio?t.slideTo(S):t.slideTo(v))}else{if(!n.shortSwipes)return void t.slideTo(t.activeIndex);t.navigation&&(r.target===t.navigation.nextEl||r.target===t.navigation.prevEl)?r.target===t.navigation.nextEl?t.slideTo(v+b):t.slideTo(v):("next"===t.swipeDirection&&t.slideTo(null!==w?w:v+b),"prev"===t.swipeDirection&&t.slideTo(null!==S?S:v))}}function B(){const e=this,{params:t,el:s}=e;if(s&&0===s.offsetWidth)return;t.breakpoints&&e.setBreakpoint();const{allowSlideNext:i,allowSlidePrev:r,snapGrid:n}=e,a=e.virtual&&e.params.virtual.enabled;e.allowSlideNext=!0,e.allowSlidePrev=!0,e.updateSize(),e.updateSlides(),e.updateSlidesClasses();const o=a&&t.loop;!("auto"===t.slidesPerView||t.slidesPerView>1)||!e.isEnd||e.isBeginning||e.params.centeredSlides||o?e.params.loop&&!a?e.slideToLoop(e.realIndex,0,!1,!0):e.slideTo(e.activeIndex,0,!1,!0):e.slideTo(e.slides.length-1,0,!1,!0),e.autoplay&&e.autoplay.running&&e.autoplay.paused&&(clearTimeout(e.autoplay.resizeTimeout),e.autoplay.resizeTimeout=setTimeout((()=>{e.autoplay&&e.autoplay.running&&e.autoplay.paused&&e.autoplay.resume()}),500)),e.allowSlidePrev=r,e.allowSlideNext=i,e.params.watchOverflow&&n!==e.snapGrid&&e.checkOverflow()}function $(e){const t=this;t.enabled&&(t.allowClick||(t.params.preventClicks&&e.preventDefault(),t.params.preventClicksPropagation&&t.animating&&(e.stopPropagation(),e.stopImmediatePropagation())))}function H(){const e=this,{wrapperEl:t,rtlTranslate:s,enabled:i}=e;if(!i)return;let r;e.previousTranslate=e.translate,e.isHorizontal()?e.translate=-t.scrollLeft:e.translate=-t.scrollTop,0===e.translate&&(e.translate=0),e.updateActiveIndex(),e.updateSlidesClasses();const n=e.maxTranslate()-e.minTranslate();r=0===n?0:(e.translate-e.minTranslate())/n,r!==e.progress&&e.updateProgress(s?-e.translate:e.translate),e.emit("setTranslate",e.translate,!1)}function R(e){const t=this;I(t,e.target),t.params.cssMode||"auto"!==t.params.slidesPerView&&!t.params.autoHeight||t.update()}function j(){const e=this;e.documentTouchHandlerProceeded||(e.documentTouchHandlerProceeded=!0,e.params.touchReleaseOnEdges&&(e.el.style.touchAction="auto"))}const W=(e,t)=>{const s=i(),{params:r,el:n,wrapperEl:a,device:o}=e,l=!!r.nested,d="on"===t?"addEventListener":"removeEventListener",c=t;n&&"string"!=typeof n&&(s[d]("touchstart",e.onDocumentTouchStart,{passive:!1,capture:l}),n[d]("touchstart",e.onTouchStart,{passive:!1}),n[d]("pointerdown",e.onTouchStart,{passive:!1}),s[d]("touchmove",e.onTouchMove,{passive:!1,capture:l}),s[d]("pointermove",e.onTouchMove,{passive:!1,capture:l}),s[d]("touchend",e.onTouchEnd,{passive:!0}),s[d]("pointerup",e.onTouchEnd,{passive:!0}),s[d]("pointercancel",e.onTouchEnd,{passive:!0}),s[d]("touchcancel",e.onTouchEnd,{passive:!0}),s[d]("pointerout",e.onTouchEnd,{passive:!0}),s[d]("pointerleave",e.onTouchEnd,{passive:!0}),s[d]("contextmenu",e.onTouchEnd,{passive:!0}),(r.preventClicks||r.preventClicksPropagation)&&n[d]("click",e.onClick,!0),r.cssMode&&a[d]("scroll",e.onScroll),r.updateOnWindowResize?e[c](o.ios||o.android?"resize orientationchange observerUpdate":"resize observerUpdate",B,!0):e[c]("observerUpdate",B,!0),n[d]("load",e.onLoad,{capture:!0}))};const Y=(e,t)=>e.grid&&t.grid&&t.grid.rows>1;var q={init:!0,direction:"horizontal",oneWayMovement:!1,swiperElementNodeName:"SWIPER-CONTAINER",touchEventsTarget:"wrapper",initialSlide:0,speed:300,cssMode:!1,updateOnWindowResize:!0,resizeObserver:!0,nested:!1,createElements:!1,eventsPrefix:"swiper",enabled:!0,focusableElements:"input, select, option, textarea, button, video, label",width:null,height:null,preventInteractionOnTransition:!1,userAgent:null,url:null,edgeSwipeDetection:!1,edgeSwipeThreshold:20,autoHeight:!1,setWrapperSize:!1,virtualTranslate:!1,effect:"slide",breakpoints:void 0,breakpointsBase:"window",spaceBetween:0,slidesPerView:1,slidesPerGroup:1,slidesPerGroupSkip:0,slidesPerGroupAuto:!1,centeredSlides:!1,centeredSlidesBounds:!1,slidesOffsetBefore:0,slidesOffsetAfter:0,normalizeSlideIndex:!0,centerInsufficientSlides:!1,watchOverflow:!0,roundLengths:!1,touchRatio:1,touchAngle:45,simulateTouch:!0,shortSwipes:!0,longSwipes:!0,longSwipesRatio:.5,longSwipesMs:300,followFinger:!0,allowTouchMove:!0,threshold:5,touchMoveStopPropagation:!1,touchStartPreventDefault:!0,touchStartForcePreventDefault:!1,touchReleaseOnEdges:!1,uniqueNavElements:!0,resistance:!0,resistanceRatio:.85,watchSlidesProgress:!1,grabCursor:!1,preventClicks:!0,preventClicksPropagation:!0,slideToClickedSlide:!1,loop:!1,loopAddBlankSlides:!0,loopAdditionalSlides:0,loopPreventsSliding:!0,rewind:!1,allowSlidePrev:!0,allowSlideNext:!0,swipeHandler:null,noSwiping:!0,noSwipingClass:"swiper-no-swiping",noSwipingSelector:null,passiveListeners:!0,maxBackfaceHiddenSlides:10,containerModifierClass:"swiper-",slideClass:"swiper-slide",slideBlankClass:"swiper-slide-blank",slideActiveClass:"swiper-slide-active",slideVisibleClass:"swiper-slide-visible",slideFullyVisibleClass:"swiper-slide-fully-visible",slideNextClass:"swiper-slide-next",slidePrevClass:"swiper-slide-prev",wrapperClass:"swiper-wrapper",lazyPreloaderClass:"swiper-lazy-preloader",lazyPreloadPrevNext:0,runCallbacksOnInit:!0,_emitClasses:!1};function X(e,t){return function(s){void 0===s&&(s={});const i=Object.keys(s)[0],r=s[i];"object"==typeof r&&null!==r?(!0===e[i]&&(e[i]={enabled:!0}),"navigation"===i&&e[i]&&e[i].enabled&&!e[i].prevEl&&!e[i].nextEl&&(e[i].auto=!0),["pagination","scrollbar"].indexOf(i)>=0&&e[i]&&e[i].enabled&&!e[i].el&&(e[i].auto=!0),i in e&&"enabled"in r?("object"!=typeof e[i]||"enabled"in e[i]||(e[i].enabled=!0),e[i]||(e[i]={enabled:!1}),c(t,s)):c(t,s)):c(t,s)}}const U={eventsEmitter:M,update:O,translate:A,transition:{setTransition:function(e,t){const s=this;s.params.cssMode||(s.wrapperEl.style.transitionDuration=`${e}ms`,s.wrapperEl.style.transitionDelay=0===e?"0ms":""),s.emit("setTransition",e,t)},transitionStart:function(e,t){void 0===e&&(e=!0);const s=this,{params:i}=s;i.cssMode||(i.autoHeight&&s.updateAutoHeight(),z({swiper:s,runCallbacks:e,direction:t,step:"Start"}))},transitionEnd:function(e,t){void 0===e&&(e=!0);const s=this,{params:i}=s;s.animating=!1,i.cssMode||(s.setTransition(0),z({swiper:s,runCallbacks:e,direction:t,step:"End"}))}},slide:G,loop:D,grabCursor:{setGrabCursor:function(e){const t=this;if(!t.params.simulateTouch||t.params.watchOverflow&&t.isLocked||t.params.cssMode)return;const s="container"===t.params.touchEventsTarget?t.el:t.wrapperEl;t.isElement&&(t.__preventObserver__=!0),s.style.cursor="move",s.style.cursor=e?"grabbing":"grab",t.isElement&&requestAnimationFrame((()=>{t.__preventObserver__=!1}))},unsetGrabCursor:function(){const e=this;e.params.watchOverflow&&e.isLocked||e.params.cssMode||(e.isElement&&(e.__preventObserver__=!0),e["container"===e.params.touchEventsTarget?"el":"wrapperEl"].style.cursor="",e.isElement&&requestAnimationFrame((()=>{e.__preventObserver__=!1})))}},events:{attachEvents:function(){const e=this,{params:t}=e;e.onTouchStart=V.bind(e),e.onTouchMove=N.bind(e),e.onTouchEnd=F.bind(e),e.onDocumentTouchStart=j.bind(e),t.cssMode&&(e.onScroll=H.bind(e)),e.onClick=$.bind(e),e.onLoad=R.bind(e),W(e,"on")},detachEvents:function(){W(this,"off")}},breakpoints:{setBreakpoint:function(){const e=this,{realIndex:t,initialized:s,params:i,el:r}=e,n=i.breakpoints;if(!n||n&&0===Object.keys(n).length)return;const a=e.getBreakpoint(n,e.params.breakpointsBase,e.el);if(!a||e.currentBreakpoint===a)return;const o=(a in n?n[a]:void 0)||e.originalParams,l=Y(e,i),d=Y(e,o),p=e.params.grabCursor,u=o.grabCursor,f=i.enabled;l&&!d?(r.classList.remove(`${i.containerModifierClass}grid`,`${i.containerModifierClass}grid-column`),e.emitContainerClasses()):!l&&d&&(r.classList.add(`${i.containerModifierClass}grid`),(o.grid.fill&&"column"===o.grid.fill||!o.grid.fill&&"column"===i.grid.fill)&&r.classList.add(`${i.containerModifierClass}grid-column`),e.emitContainerClasses()),p&&!u?e.unsetGrabCursor():!p&&u&&e.setGrabCursor(),["navigation","pagination","scrollbar"].forEach((t=>{if(void 0===o[t])return;const s=i[t]&&i[t].enabled,r=o[t]&&o[t].enabled;s&&!r&&e[t].disable(),!s&&r&&e[t].enable()}));const h=o.direction&&o.direction!==i.direction,m=i.loop&&(o.slidesPerView!==i.slidesPerView||h),v=i.loop;h&&s&&e.changeDirection(),c(e.params,o);const g=e.params.enabled,w=e.params.loop;Object.assign(e,{allowTouchMove:e.params.allowTouchMove,allowSlideNext:e.params.allowSlideNext,allowSlidePrev:e.params.allowSlidePrev}),f&&!g?e.disable():!f&&g&&e.enable(),e.currentBreakpoint=a,e.emit("_beforeBreakpoint",o),s&&(m?(e.loopDestroy(),e.loopCreate(t),e.updateSlides()):!v&&w?(e.loopCreate(t),e.updateSlides()):v&&!w&&e.loopDestroy()),e.emit("breakpoint",o)},getBreakpoint:function(e,t,s){if(void 0===t&&(t="window"),!e||"container"===t&&!s)return;let i=!1;const r=n(),a="window"===t?r.innerHeight:s.clientHeight,o=Object.keys(e).map((e=>{if("string"==typeof e&&0===e.indexOf("@")){const t=parseFloat(e.substr(1));return{value:a*t,point:e}}return{value:e,point:e}}));o.sort(((e,t)=>parseInt(e.value,10)-parseInt(t.value,10)));for(let e=0;e<o.length;e+=1){const{point:n,value:a}=o[e];"window"===t?r.matchMedia(`(min-width: ${a}px)`).matches&&(i=n):a<=s.clientWidth&&(i=n)}return i||"max"}},checkOverflow:{checkOverflow:function(){const e=this,{isLocked:t,params:s}=e,{slidesOffsetBefore:i}=s;if(i){const t=e.slides.length-1,s=e.slidesGrid[t]+e.slidesSizesGrid[t]+2*i;e.isLocked=e.size>s}else e.isLocked=1===e.snapGrid.length;!0===s.allowSlideNext&&(e.allowSlideNext=!e.isLocked),!0===s.allowSlidePrev&&(e.allowSlidePrev=!e.isLocked),t&&t!==e.isLocked&&(e.isEnd=!1),t!==e.isLocked&&e.emit(e.isLocked?"lock":"unlock")}},classes:{addClasses:function(){const e=this,{classNames:t,params:s,rtl:i,el:r,device:n}=e,a=function(e,t){const s=[];return e.forEach((e=>{"object"==typeof e?Object.keys(e).forEach((i=>{e[i]&&s.push(t+i)})):"string"==typeof e&&s.push(t+e)})),s}(["initialized",s.direction,{"free-mode":e.params.freeMode&&s.freeMode.enabled},{autoheight:s.autoHeight},{rtl:i},{grid:s.grid&&s.grid.rows>1},{"grid-column":s.grid&&s.grid.rows>1&&"column"===s.grid.fill},{android:n.android},{ios:n.ios},{"css-mode":s.cssMode},{centered:s.cssMode&&s.centeredSlides},{"watch-progress":s.watchSlidesProgress}],s.containerModifierClass);t.push(...a),r.classList.add(...t),e.emitContainerClasses()},removeClasses:function(){const{el:e,classNames:t}=this;e&&"string"!=typeof e&&(e.classList.remove(...t),this.emitContainerClasses())}}},K={};class J{constructor(){let e,t;for(var s=arguments.length,r=new Array(s),n=0;n<s;n++)r[n]=arguments[n];1===r.length&&r[0].constructor&&"Object"===Object.prototype.toString.call(r[0]).slice(8,-1)?t=r[0]:[e,t]=r,t||(t={}),t=c({},t),e&&!t.el&&(t.el=e);const a=i();if(t.el&&"string"==typeof t.el&&a.querySelectorAll(t.el).length>1){const e=[];return a.querySelectorAll(t.el).forEach((s=>{const i=c({},t,{el:s});e.push(new J(i))})),e}const o=this;o.__swiper__=!0,o.support=y(),o.device=x({userAgent:t.userAgent}),o.browser=E(),o.eventsListeners={},o.eventsAnyListeners=[],o.modules=[...o.__modules__],t.modules&&Array.isArray(t.modules)&&o.modules.push(...t.modules);const l={};o.modules.forEach((e=>{e({params:t,swiper:o,extendParams:X(t,l),on:o.on.bind(o),once:o.once.bind(o),off:o.off.bind(o),emit:o.emit.bind(o)})}));const d=c({},q,l);return o.params=c({},d,K,t),o.originalParams=c({},o.params),o.passedParams=c({},t),o.params&&o.params.on&&Object.keys(o.params.on).forEach((e=>{o.on(e,o.params.on[e])})),o.params&&o.params.onAny&&o.onAny(o.params.onAny),Object.assign(o,{enabled:o.params.enabled,el:e,classNames:[],slides:[],slidesGrid:[],snapGrid:[],slidesSizesGrid:[],isHorizontal:()=>"horizontal"===o.params.direction,isVertical:()=>"vertical"===o.params.direction,activeIndex:0,realIndex:0,isBeginning:!0,isEnd:!1,translate:0,previousTranslate:0,progress:0,velocity:0,animating:!1,cssOverflowAdjustment(){return Math.trunc(this.translate/2**23)*2**23},allowSlideNext:o.params.allowSlideNext,allowSlidePrev:o.params.allowSlidePrev,touchEventsData:{isTouched:void 0,isMoved:void 0,allowTouchCallbacks:void 0,touchStartTime:void 0,isScrolling:void 0,currentTranslate:void 0,startTranslate:void 0,allowThresholdMove:void 0,focusableElements:o.params.focusableElements,lastClickTime:0,clickTimeout:void 0,velocities:[],allowMomentumBounce:void 0,startMoving:void 0,pointerId:null,touchId:null},allowClick:!0,allowTouchMove:o.params.allowTouchMove,touches:{startX:0,startY:0,currentX:0,currentY:0,diff:0},imagesToLoad:[],imagesLoaded:0}),o.emit("_swiper"),o.params.init&&o.init(),o}getDirectionLabel(e){return this.isHorizontal()?e:{width:"height","margin-top":"margin-left","margin-bottom ":"margin-right","margin-left":"margin-top","margin-right":"margin-bottom","padding-left":"padding-top","padding-right":"padding-bottom",marginRight:"marginBottom"}[e]}getSlideIndex(e){const{slidesEl:t,params:s}=this,i=g(f(t,`.${s.slideClass}, swiper-slide`)[0]);return g(e)-i}getSlideIndexByData(e){return this.getSlideIndex(this.slides.filter((t=>1*t.getAttribute("data-swiper-slide-index")===e))[0])}recalcSlides(){const{slidesEl:e,params:t}=this;this.slides=f(e,`.${t.slideClass}, swiper-slide`)}enable(){const e=this;e.enabled||(e.enabled=!0,e.params.grabCursor&&e.setGrabCursor(),e.emit("enable"))}disable(){const e=this;e.enabled&&(e.enabled=!1,e.params.grabCursor&&e.unsetGrabCursor(),e.emit("disable"))}setProgress(e,t){const s=this;e=Math.min(Math.max(e,0),1);const i=s.minTranslate(),r=(s.maxTranslate()-i)*e+i;s.translateTo(r,void 0===t?0:t),s.updateActiveIndex(),s.updateSlidesClasses()}emitContainerClasses(){const e=this;if(!e.params._emitClasses||!e.el)return;const t=e.el.className.split(" ").filter((t=>0===t.indexOf("swiper")||0===t.indexOf(e.params.containerModifierClass)));e.emit("_containerClasses",t.join(" "))}getSlideClasses(e){const t=this;return t.destroyed?"":e.className.split(" ").filter((e=>0===e.indexOf("swiper-slide")||0===e.indexOf(t.params.slideClass))).join(" ")}emitSlidesClasses(){const e=this;if(!e.params._emitClasses||!e.el)return;const t=[];e.slides.forEach((s=>{const i=e.getSlideClasses(s);t.push({slideEl:s,classNames:i}),e.emit("_slideClass",s,i)})),e.emit("_slideClasses",t)}slidesPerViewDynamic(e,t){void 0===e&&(e="current"),void 0===t&&(t=!1);const{params:s,slides:i,slidesGrid:r,slidesSizesGrid:n,size:a,activeIndex:o}=this;let l=1;if("number"==typeof s.slidesPerView)return s.slidesPerView;if(s.centeredSlides){let e,t=i[o]?Math.ceil(i[o].swiperSlideSize):0;for(let s=o+1;s<i.length;s+=1)i[s]&&!e&&(t+=Math.ceil(i[s].swiperSlideSize),l+=1,t>a&&(e=!0));for(let s=o-1;s>=0;s-=1)i[s]&&!e&&(t+=i[s].swiperSlideSize,l+=1,t>a&&(e=!0))}else if("current"===e)for(let e=o+1;e<i.length;e+=1){(t?r[e]+n[e]-r[o]<a:r[e]-r[o]<a)&&(l+=1)}else for(let e=o-1;e>=0;e-=1){r[o]-r[e]<a&&(l+=1)}return l}update(){const e=this;if(!e||e.destroyed)return;const{snapGrid:t,params:s}=e;function i(){const t=e.rtlTranslate?-1*e.translate:e.translate,s=Math.min(Math.max(t,e.maxTranslate()),e.minTranslate());e.setTranslate(s),e.updateActiveIndex(),e.updateSlidesClasses()}let r;if(s.breakpoints&&e.setBreakpoint(),[...e.el.querySelectorAll('[loading="lazy"]')].forEach((t=>{t.complete&&I(e,t)})),e.updateSize(),e.updateSlides(),e.updateProgress(),e.updateSlidesClasses(),s.freeMode&&s.freeMode.enabled&&!s.cssMode)i(),s.autoHeight&&e.updateAutoHeight();else{if(("auto"===s.slidesPerView||s.slidesPerView>1)&&e.isEnd&&!s.centeredSlides){const t=e.virtual&&s.virtual.enabled?e.virtual.slides:e.slides;r=e.slideTo(t.length-1,0,!1,!0)}else r=e.slideTo(e.activeIndex,0,!1,!0);r||i()}s.watchOverflow&&t!==e.snapGrid&&e.checkOverflow(),e.emit("update")}changeDirection(e,t){void 0===t&&(t=!0);const s=this,i=s.params.direction;return e||(e="horizontal"===i?"vertical":"horizontal"),e===i||"horizontal"!==e&&"vertical"!==e||(s.el.classList.remove(`${s.params.containerModifierClass}${i}`),s.el.classList.add(`${s.params.containerModifierClass}${e}`),s.emitContainerClasses(),s.params.direction=e,s.slides.forEach((t=>{"vertical"===e?t.style.width="":t.style.height=""})),s.emit("changeDirection"),t&&s.update()),s}changeLanguageDirection(e){const t=this;t.rtl&&"rtl"===e||!t.rtl&&"ltr"===e||(t.rtl="rtl"===e,t.rtlTranslate="horizontal"===t.params.direction&&t.rtl,t.rtl?(t.el.classList.add(`${t.params.containerModifierClass}rtl`),t.el.dir="rtl"):(t.el.classList.remove(`${t.params.containerModifierClass}rtl`),t.el.dir="ltr"),t.update())}mount(e){const t=this;if(t.mounted)return!0;let s=e||t.params.el;if("string"==typeof s&&(s=document.querySelector(s)),!s)return!1;s.swiper=t,s.parentNode&&s.parentNode.host&&s.parentNode.host.nodeName===t.params.swiperElementNodeName.toUpperCase()&&(t.isElement=!0);const i=()=>`.${(t.params.wrapperClass||"").trim().split(" ").join(".")}`;let r=(()=>{if(s&&s.shadowRoot&&s.shadowRoot.querySelector){return s.shadowRoot.querySelector(i())}return f(s,i())[0]})();return!r&&t.params.createElements&&(r=m("div",t.params.wrapperClass),s.append(r),f(s,`.${t.params.slideClass}`).forEach((e=>{r.append(e)}))),Object.assign(t,{el:s,wrapperEl:r,slidesEl:t.isElement&&!s.parentNode.host.slideSlots?s.parentNode.host:r,hostEl:t.isElement?s.parentNode.host:s,mounted:!0,rtl:"rtl"===s.dir.toLowerCase()||"rtl"===v(s,"direction"),rtlTranslate:"horizontal"===t.params.direction&&("rtl"===s.dir.toLowerCase()||"rtl"===v(s,"direction")),wrongRTL:"-webkit-box"===v(r,"display")}),!0}init(e){const t=this;if(t.initialized)return t;if(!1===t.mount(e))return t;t.emit("beforeInit"),t.params.breakpoints&&t.setBreakpoint(),t.addClasses(),t.updateSize(),t.updateSlides(),t.params.watchOverflow&&t.checkOverflow(),t.params.grabCursor&&t.enabled&&t.setGrabCursor(),t.params.loop&&t.virtual&&t.params.virtual.enabled?t.slideTo(t.params.initialSlide+t.virtual.slidesBefore,0,t.params.runCallbacksOnInit,!1,!0):t.slideTo(t.params.initialSlide,0,t.params.runCallbacksOnInit,!1,!0),t.params.loop&&t.loopCreate(),t.attachEvents();const s=[...t.el.querySelectorAll('[loading="lazy"]')];return t.isElement&&s.push(...t.hostEl.querySelectorAll('[loading="lazy"]')),s.forEach((e=>{e.complete?I(t,e):e.addEventListener("load",(e=>{I(t,e.target)}))})),k(t),t.initialized=!0,k(t),t.emit("init"),t.emit("afterInit"),t}destroy(e,t){void 0===e&&(e=!0),void 0===t&&(t=!0);const s=this,{params:i,el:r,wrapperEl:n,slides:a}=s;return void 0===s.params||s.destroyed||(s.emit("beforeDestroy"),s.initialized=!1,s.detachEvents(),i.loop&&s.loopDestroy(),t&&(s.removeClasses(),r&&"string"!=typeof r&&r.removeAttribute("style"),n&&n.removeAttribute("style"),a&&a.length&&a.forEach((e=>{e.classList.remove(i.slideVisibleClass,i.slideFullyVisibleClass,i.slideActiveClass,i.slideNextClass,i.slidePrevClass),e.removeAttribute("style"),e.removeAttribute("data-swiper-slide-index")}))),s.emit("destroy"),Object.keys(s.eventsListeners).forEach((e=>{s.off(e)})),!1!==e&&(s.el&&"string"!=typeof s.el&&(s.el.swiper=null),function(e){const t=e;Object.keys(t).forEach((e=>{try{t[e]=null}catch(e){}try{delete t[e]}catch(e){}}))}(s)),s.destroyed=!0),null}static extendDefaults(e){c(K,e)}static get extendedDefaults(){return K}static get defaults(){return q}static installModule(e){J.prototype.__modules__||(J.prototype.__modules__=[]);const t=J.prototype.__modules__;"function"==typeof e&&t.indexOf(e)<0&&t.push(e)}static use(e){return Array.isArray(e)?(e.forEach((e=>J.installModule(e))),J):(J.installModule(e),J)}}return Object.keys(U).forEach((e=>{Object.keys(U[e]).forEach((t=>{J.prototype[t]=U[e][t]}))})),J.use([function(e){let{swiper:t,on:s,emit:i}=e;const r=n();let a=null,o=null;const l=()=>{t&&!t.destroyed&&t.initialized&&(i("beforeResize"),i("resize"))},d=()=>{t&&!t.destroyed&&t.initialized&&i("orientationchange")};s("init",(()=>{t.params.resizeObserver&&void 0!==r.ResizeObserver?t&&!t.destroyed&&t.initialized&&(a=new ResizeObserver((e=>{o=r.requestAnimationFrame((()=>{const{width:s,height:i}=t;let r=s,n=i;e.forEach((e=>{let{contentBoxSize:s,contentRect:i,target:a}=e;a&&a!==t.el||(r=i?i.width:(s[0]||s).inlineSize,n=i?i.height:(s[0]||s).blockSize)})),r===s&&n===i||l()}))})),a.observe(t.el)):(r.addEventListener("resize",l),r.addEventListener("orientationchange",d))})),s("destroy",(()=>{o&&r.cancelAnimationFrame(o),a&&a.unobserve&&t.el&&(a.unobserve(t.el),a=null),r.removeEventListener("resize",l),r.removeEventListener("orientationchange",d)}))},function(e){let{swiper:t,extendParams:s,on:i,emit:r}=e;const a=[],o=n(),l=function(e,s){void 0===s&&(s={});const i=new(o.MutationObserver||o.WebkitMutationObserver)((e=>{if(t.__preventObserver__)return;if(1===e.length)return void r("observerUpdate",e[0]);const s=function(){r("observerUpdate",e[0])};o.requestAnimationFrame?o.requestAnimationFrame(s):o.setTimeout(s,0)}));i.observe(e,{attributes:void 0===s.attributes||s.attributes,childList:t.isElement||(void 0===s.childList||s).childList,characterData:void 0===s.characterData||s.characterData}),a.push(i)};s({observer:!1,observeParents:!1,observeSlideChildren:!1}),i("init",(()=>{if(t.params.observer){if(t.params.observeParents){const e=function(e,t){const s=[];let i=e.parentElement;for(;i;)t?i.matches(t)&&s.push(i):s.push(i),i=i.parentElement;return s}(t.hostEl);for(let t=0;t<e.length;t+=1)l(e[t])}l(t.hostEl,{childList:t.params.observeSlideChildren}),l(t.wrapperEl,{attributes:!1})}})),i("destroy",(()=>{a.forEach((e=>{e.disconnect()})),a.splice(0,a.length)}))}]),J}();
+//# sourceMappingURL=swiper.min.js.map                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       jQuery(function () {
+    $("#lang").select2();
+});
+
+// Get the switchTheme
+const switchTheme = document.querySelector(".theme-controller");
+
+// Listen for changes and save the state
+switchTheme.addEventListener("change", function () {
+    if (localStorage.theme === "dark") {
+        document.documentElement.classList.remove("dark");
+        localStorage.theme === "light";
+    } else {
+        document.documentElement.classList.add("dark");
+        localStorage.theme === "dark";
+    }
+});
+
+// To load the state from local storage
+
+if (localStorage.theme === "dark") {
+    switchTheme.checked = true;
+} else {
+    switchTheme.checked = false;
+}
+
+// Load the state when the page loads
+// window.addEventListener("load", loadFromLocalStorage);
+
+// const savedState = localStorage.getItem("theme");
+// if (savedState === "true") {
+//     switchTheme.checked = true;
+// } else {
+//     switchTheme.checked = false;
+// }
+if (localStorage.theme === "dark") {
+    document.documentElement.classList.add("dark");
+} else {
+    document.documentElement.classList.remove("dark");
+}
+// // import swiper js
+// import Swiper from "swiper";
+// // import swiper styles
+// import "swiper/css";
+
+const swiper = new Swiper(".head-slider", {
+    // Optional parameters
+    direction: "horizontal",
+    loop: true,
+    effect: "fade",
+
+    // If we need pagination
+    pagination: {
+        el: ".swiper-pagination",
+    },
+
+    // Navigation arrows
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+        el: ".swiper-scrollbar",
+        hide: true,
+    },
+});
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            class="inline-block h-48 overflow-hidden rounded-xl shadow-lg"><img
+                                                        class="w-full h-full transform transition duration-300 hover:scale-110"
+                                                        src="images/education-group/islamic-history-400x300.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="px-4 pb-4">
+                                                <h3>
+                                                    <a href="#"
+                                                        class="flex items-center p-1 bg-white rounded-xl shadow-lg">
+                                                        <span class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg">
+                                                            نام گروه :
+                                                        </span>
+                                                        تاریخ اسلام
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="bg-gradient-to-br from-transparent to-red-200 rounded-xl dark:bg-dark-800 dark:bg-none">
+                                            <div class="w-full p-4">
+                                                <a href="#"
+                                                    class="inline-block h-48 overflow-hidden rounded-xl shadow-lg"><img
+                                                        class="w-full h-full transform transition duration-300 hover:scale-110"
+                                                        src="images/education-group/civilengineer-400x300.webp"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="px-4 pb-4">
+                                                <h3>
+                                                    <a href="#"
+                                                        class="flex items-center p-1 bg-white rounded-xl shadow-lg">
+                                                        <span class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg">
+                                                            نام گروه :
+                                                        </span>
+                                                        مهندسی عمران
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="bg-gradient-to-br from-transparent to-red-200 rounded-xl dark:bg-dark-800 dark:bg-none">
+                                            <div class="w-full p-4">
+                                                <a href="#"
+                                                    class="inline-block h-48 overflow-hidden rounded-xl shadow-lg"><img
+                                                        class="w-full h-full transform transition duration-300 hover:scale-110"
+                                                        src="images/education-group/gavel-with-books-old-wooden-desk-400x300.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="px-4 pb-4">
+                                                <h3>
+                                                    <a href="#"
+                                                        class="flex items-center p-1 bg-white rounded-xl shadow-lg">
+                                                        <span class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg">
+                                                            نام گروه :
+                                                        </span>
+                                                        حقوق جزا و جرم شناسی
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="bg-gradient-to-br from-transparent to-red-200 rounded-xl dark:bg-dark-800 dark:bg-none">
+                                            <div class="w-full p-4">
+                                                <a href="#"
+                                                    class="inline-block h-48 overflow-hidden rounded-xl shadow-lg"><img
+                                                        class="w-full h-full transform transition duration-300 hover:scale-110"
+                                                        src="images/education-group/front-view-plant-growing-from-golden-coins-400x300.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="px-4 pb-4">
+                                                <h3>
+                                                    <a href="#"
+                                                        class="flex items-center p-1 bg-white rounded-xl shadow-lg">
+                                                        <span class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg">
+                                                            نام گروه :
+                                                        </span>
+                                                        علوم اقتصادی
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                            <!-- <div class="flex justify-between items-center w-full h-full z-10 absolute top-0">
+                                <div class="educ-button-prev"><i class="fa-regular fa-chevron-right"></i></div>
+                                <div class="educ-button-next"><i class="fa-regular fa-chevron-left"></i></div>
+                            </div> -->
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End education groups section -->
+
+        <!-- Educational calendar section -->
+        <section class="mt-10">
+            <div class="container">
+
+                <div class="flex flex-col items-center pt-10">
+                    <h3
+                        class="flex items-center justify-center text-slate-900 dark:text-slate-200 font-rokh font-bold text-2xl gap-x-4">
+                        <span class="bg-blue-600 align-middle inline-block h-1 rounded-xl"> &nbsp; &nbsp; &nbsp;</span>
+                        تقویم آموزشی
+                        <span class="bg-blue-600 align-middle inline-block h-1 rounded-xl"> &nbsp; &nbsp; &nbsp;</span>
+                    </h3>
+                    <p class="text-slate-700 dark:text-slate-400">
+                        Educational calendar
+                    </p>
+                </div>
+
+                <div
+                    class="swiper educational-calendar-slider mt-10 rounded-xl bg-gradient-to-r from-transparent to-blue-200 dark:to-dark-900">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper pt-10">
+                        <!-- Slides -->
+                        <div class="swiper-slide pb-10">
+                            <div class="flex flex-col items-center gap-y-4">
+                                <div class="flex flex-col items-center gap-y-2 dark:text-slate-400">
+                                    <span>
+                                        ۱۰ - ۲۰
+                                    </span>
+                                    <span>
+                                        شهریور ماه ۱۴۰۳
+                                    </span>
+                                </div>
+                                <div class="relative">
+                                    <div class="w-5 h-5 border-4 bg-white border-blue-500 rounded-full">
+                                    </div>
+                                    <span
+                                        class="block absolute top-2 right-4 -z-10 0 h-1 w-40 md:w-28 lg:w-40 bg-blue-500"></span>
+                                </div>
+                                <div>
+                                    <a class="font-medium px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg"
+                                        href="#">انتخاب واحد</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide pb-10">
+                            <div class="flex flex-col items-center gap-y-4">
+                                <div class="flex flex-col items-center gap-y-2 dark:text-slate-400">
+                                    <span>
+                                        ۱۳
+                                    </span>
+                                    <span>
+                                        شهریور ماه ۱۴۰۳
+                                    </span>
+                                </div>
+                                <div class="relative">
+                                    <div class="w-5 h-5 border-4 bg-white border-blue-500 rounded-full relative">
+                                    </div>
+                                    <span
+                                        class="block -z-10 absolute top-2 right-4 h-1 w-40 md:w-28 lg:w-40 bg-blue-500"></span>
+                                    <span class="block -z-10 absolute top-2 left-4 h-1 w-40 md:w-28 lg:w-40 bg-blue-500"></span>
+                                </div>
+                                <div>
+                                    <a class="font-medium px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg" href="#">
+                                        شروع کلاس ها
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide pb-10">
+                            <div class="flex flex-col items-center gap-y-4">
+                                <div class="flex flex-col items-center gap-y-2 dark:text-slate-400">
+                                    <span>
+                                        ۱ - ۷
+                                    </span>
+                                    <span>
+                                        مهر ماه ۱۴۰۳
+                                    </span>
+                                </div>
+                                <div class="relative">
+                                    <div class="w-5 h-5 border-4 bg-white border-blue-500 rounded-full relative">
+                                    </div>
+                                    <span
+                                        class="block -z-10 absolute top-2 right-4 h-1 w-40 md:w-28 lg:w-40 bg-blue-500"></span>
+                                    <span class="block -z-10 absolute top-2 left-4 h-1 w-40 md:w-28 lg:w-40 bg-blue-500"></span>
+                                </div>
+                                <div>
+                                    <a class="font-medium px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg" href="#">
+                                        حذف و اضافه
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide pb-10">
+                            <div class="flex flex-col items-center gap-y-4">
+                                <div class="flex flex-col items-center gap-y-2 dark:text-slate-400">
+                                    <span>
+                                        ۳۰
+                                    </span>
+                                    <span>
+                                        آذر ماه ۱۴۰۳
+                                    </span>
+                                </div>
+                                <div class="relative">
+                                    <div class="w-5 h-5 border-4 bg-white border-blue-500 rounded-full relative">
+                                    </div>
+                                    <span
+                                        class="block -z-10 absolute top-2 right-4 h-1 w-40 md:w-28 lg:w-40 bg-blue-500"></span>
+                                    <span class="block -z-10 absolute top-2 left-4 h-1 w-40 md:w-28 lg:w-40 bg-blue-500"></span>
+                                </div>
+                                <div>
+                                    <a class="font-medium px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg" href="#">
+                                        پایان کلاس ها
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide pb-10">
+                            <div class="flex flex-col items-center gap-y-4">
+                                <div class="flex flex-col items-center gap-y-2 dark:text-slate-400">
+                                    <span>
+                                        ۲۵ - ۳۰
+                                    </span>
+                                    <span>
+                                        دی و بهمن ماه ۱۴۰۳
+                                    </span>
+                                </div>
+                                <div class="relative">
+                                    <div class="w-5 h-5 border-4 bg-white border-blue-500 rounded-full relative">
+                                    </div>
+                                    <span class="block -z-10 absolute top-2 left-4 h-1 w-40 md:w-28 lg:w-40 bg-blue-500"></span>
+                                </div>
+                                <div>
+                                    <a class="font-medium px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg" href="#">
+                                        شروع امتحانات
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- If we need navigation buttons -->
+                    <!-- <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div> -->
+
+                    <!-- If we need scrollbar -->
+                    <div class="swiper-scrollbar"></div>
+                </div>
+
+
+            </div>
+        </section>
+        <!-- End Educational calendar section -->
+
+        <!-- Study section -->
+        <section class="mt-20">
+            <div class="container">
+                <div class="flex flex-col items-center pt-10">
+                    <h3
+                        class="flex items-center justify-center text-slate-900 dark:text-slate-200 font-rokh font-bold text-2xl gap-x-4">
+                        <span class="bg-blue-600 align-middle inline-block h-1 rounded-xl"> &nbsp; &nbsp; &nbsp;</span>
+                        چرا ما را انتخاب کنید؟
+                        <span class="bg-blue-600 align-middle inline-block h-1 rounded-xl"> &nbsp; &nbsp; &nbsp;</span>
+                    </h3>
+                    <p class="text-slate-700 dark:text-slate-400">
+                        Why us?
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 mt-10 gap-y-16 sm:gap-10 px-8 py-16 rounded-xl bg-gradient-to-r from-transparent to-red-200 dark:to-dark-900">
+                    <div>
+                        <h4 class="font-rokh text-lg font-bold mb-4 dark:text-slate-200">
+                            از گوشه و کنار جهان برای آموختن
+                        </h4>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                            تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در
+                            شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها
+                            شناخت بیشتری را برای طراحان رایانه ای علی
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6 text-slate-600 dark:text-slate-400">
+                        <div class="flex flex-row items-center">
+                            <a href="#"
+                                class="flex items-center text-2xl bg-blue-600 text-white px-3 pt-4 pb-3 rounded-b-md rounded-t-[100%]">
+                                <i class="fa-light fa-books"></i>
+                            </a>
+                            <p class="flex flex-col justify-end pr-3">
+                                <span>۴۶۲</span>
+                                <span>رشته تحصیلی</span>
+                            </p>
+                        </div>
+                        <div class="flex flex-row items-center">
+                            <a href="#"
+                                class="flex items-center text-2xl bg-blue-600 text-white px-3 pt-4 pb-3 rounded-b-md rounded-t-[100%]">
+                                <i class="fa-light fa-screen-users"></i>
+                            </a>
+                            <p class="flex flex-col justify-end pr-3">
+                                <span>۱۰۳۴۶</span>
+                                <span>دانشجو</span>
+                            </p>
+                        </div>
+                        <div class="flex flex-row items-center">
+                            <a href="#"
+                                class="flex items-center text-2xl bg-blue-600 text-white px-3 pt-4 pb-3 rounded-b-md rounded-t-[100%]">
+                                <i class="fa-light fa-brain"></i>
+                            </a>
+                            <p class="flex flex-col justify-end pr-3">
+                                <span>۱۷۴۹۰</span>
+                                <span>مقالات ISI</span>
+                            </p>
+                        </div>
+                        <div class="flex flex-row items-center">
+                            <a href="#"
+                                class="flex items-center text-2xl bg-blue-600 text-white px-3 pt-4 pb-3 rounded-b-md rounded-t-[100%]">
+                                <i class="fa-light fa-graduation-cap"></i>
+                            </a>
+                            <p class="flex flex-col justify-end pr-3">
+                                <span>۱۰۰۴۳۵۲</span>
+                                <span>دانش آموخته</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End study section -->
+    </main>
+
+    <footer class="dark:bg-dark-850 pt-24 pb-10">
+        <div class="container">
+            <div class="relative">
+                <span
+                    class="absolute border-t border-1 sm:top-2/4 top-5 trasform sm:translate-y-2/4 dark:border-slate-600 w-full z-0 right-0"></span>
+                <div class="flex items-center justify-between sm:flex-row flex-col relative z-10">
+                    <div class="w-fit-content dark:bg-dark-850 sm:mb-0 mb-6 pl-8 pr-8 sm:pr-0">
+                        <img class="h-16 dark:bg-white" src="images/logo-dark.png" alt="">
+                    </div>
+                    <ul class="flex dark:bg-dark-850 sm:pr-8 self-center">
+                        <li class="mr-2">
+                            <a href="#" rel="nofollow"
+                                class="group flex items-center rounded justify-center w-10 h-10 dark:hover:bg-blue-970 dark:bg-blue-800 dark:bg-opacity-25 bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear">
+                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        class="fill-current transition duration-300 ease-linear dark:text-blue-300 text-blue-700 group-hover:text-white"
+                                        d="M18.6728 2.84651C18.6728 2.84651 18.4918 1.56883 17.9344 1.00782C17.2286 0.269445 16.4396 0.265826 16.0776 0.222392C13.4861 0.0341796 9.59518 0.0341797 9.59518 0.0341797H9.58794C9.58794 0.0341797 5.69701 0.0341796 3.10547 0.222392C2.74352 0.265826 1.95448 0.269445 1.24868 1.00782C0.691281 1.56883 0.513926 2.84651 0.513926 2.84651C0.513926 2.84651 0.325714 4.34859 0.325714 5.84705V7.2514C0.325714 8.74986 0.510307 10.2519 0.510307 10.2519C0.510307 10.2519 0.69128 11.5296 1.24506 12.0906C1.95086 12.829 2.87744 12.8037 3.29006 12.8833C4.77404 13.0245 9.59155 13.0679 9.59155 13.0679C9.59155 13.0679 13.4861 13.0607 16.0776 12.8761C16.4396 12.8326 17.2286 12.829 17.9344 12.0906C18.4918 11.5296 18.6728 10.2519 18.6728 10.2519C18.6728 10.2519 18.8574 8.75348 18.8574 7.2514V5.84705C18.8574 4.34859 18.6728 2.84651 18.6728 2.84651ZM7.67686 8.95617V3.74776L12.6826 6.36101L7.67686 8.95617Z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="mr-2">
+                            <a href="#"
+                                class="group flex items-center rounded justify-center w-10 h-10 dark:hover:bg-blue-970 dark:bg-blue-800 dark:bg-opacity-25 bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear"
+                                rel="nofollow">
+                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        class="fill-current transition duration-300 ease-linear dark:text-blue-300 text-blue-700 group-hover:text-white"
+                                        d="M8.77638 2.139C10.8663 2.139 11.1137 2.14816 11.9356 2.18483C12.6995 2.21844 13.1119 2.34676 13.3869 2.4537C13.7505 2.59425 14.0133 2.76535 14.2852 3.03728C14.5602 3.31226 14.7282 3.57197 14.8688 3.93555C14.9757 4.21054 15.1041 4.62607 15.1377 5.38686C15.1743 6.21181 15.1835 6.45929 15.1835 8.54611C15.1835 10.636 15.1743 10.8835 15.1377 11.7054C15.1041 12.4692 14.9757 12.8817 14.8688 13.1567C14.7282 13.5203 14.5571 13.783 14.2852 14.0549C14.0102 14.3299 13.7505 14.498 13.3869 14.6385C13.1119 14.7455 12.6964 14.8738 11.9356 14.9074C11.1107 14.9441 10.8632 14.9532 8.77638 14.9532C6.6865 14.9532 6.43902 14.9441 5.61712 14.9074C4.85328 14.8738 4.4408 14.7455 4.16582 14.6385C3.80223 14.498 3.53947 14.3269 3.26754 14.0549C2.99255 13.78 2.82451 13.5203 2.68396 13.1567C2.57702 12.8817 2.4487 12.4662 2.41509 11.7054C2.37842 10.8804 2.36926 10.6329 2.36926 8.54611C2.36926 6.45624 2.37842 6.20875 2.41509 5.38686C2.4487 4.62301 2.57702 4.21054 2.68396 3.93555C2.82451 3.57197 2.99561 3.3092 3.26754 3.03728C3.54252 2.76229 3.80223 2.59425 4.16582 2.4537C4.4408 2.34676 4.85633 2.21844 5.61712 2.18483C6.43902 2.14816 6.6865 2.139 8.77638 2.139ZM8.77638 0.730469C6.65289 0.730469 6.38707 0.739635 5.55296 0.776299C4.7219 0.812964 4.15054 0.9474 3.65557 1.13989C3.13921 1.34154 2.70229 1.60736 2.26843 2.04428C1.83151 2.47814 1.56569 2.91506 1.36404 3.42836C1.17155 3.92639 1.03712 4.49469 1.00045 5.32575C0.963786 6.16292 0.95462 6.42874 0.95462 8.55222C0.95462 10.6757 0.963786 10.9415 1.00045 11.7756C1.03712 12.6067 1.17155 13.1781 1.36404 13.673C1.56569 14.1894 1.83151 14.6263 2.26843 15.0602C2.70229 15.494 3.13921 15.7629 3.65252 15.9615C4.15054 16.154 4.71884 16.2884 5.5499 16.3251C6.38402 16.3618 6.64984 16.3709 8.77332 16.3709C10.8968 16.3709 11.1626 16.3618 11.9967 16.3251C12.8278 16.2884 13.3992 16.154 13.8941 15.9615C14.4074 15.7629 14.8443 15.494 15.2782 15.0602C15.7121 14.6263 15.9809 14.1894 16.1795 13.6761C16.372 13.1781 16.5065 12.6098 16.5431 11.7787C16.5798 10.9446 16.589 10.6788 16.589 8.55528C16.589 6.43179 16.5798 6.16598 16.5431 5.33186C16.5065 4.5008 16.372 3.92944 16.1795 3.43447C15.9871 2.91506 15.7212 2.47814 15.2843 2.04428C14.8505 1.61042 14.4135 1.34154 13.9002 1.14294C13.4022 0.950456 12.8339 0.816019 12.0028 0.779355C11.1657 0.739635 10.8999 0.730469 8.77638 0.730469Z">
+                                    </path>
+                                    <path
+                                        class="fill-current transition duration-300 ease-linear dark:text-blue-300 text-blue-700 group-hover:text-white"
+                                        d="M8.77637 4.53441C6.55817 4.53441 4.75856 6.33402 4.75856 8.55222C4.75856 10.7704 6.55817 12.57 8.77637 12.57C10.9946 12.57 12.7942 10.7704 12.7942 8.55222C12.7942 6.33402 10.9946 4.53441 8.77637 4.53441ZM8.77637 11.1585C7.33729 11.1585 6.17014 9.9913 6.17014 8.55222C6.17014 7.11314 7.33729 5.94599 8.77637 5.94599C10.2155 5.94599 11.3826 7.11314 11.3826 8.55222C11.3826 9.9913 10.2155 11.1585 8.77637 11.1585Z">
+                                    </path>
+                                    <path
+                                        class="fill-current transition duration-300 ease-linear dark:text-blue-300 text-blue-700 group-hover:text-white"
+                                        d="M13.8911 4.37544C13.8911 4.89486 13.4694 5.31345 12.9531 5.31345C12.4337 5.31345 12.0151 4.8918 12.0151 4.37544C12.0151 3.85603 12.4367 3.43744 12.9531 3.43744C13.4694 3.43744 13.8911 3.85909 13.8911 4.37544Z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="mr-2">
+                            <a href="#"
+                                class="group flex items-center rounded justify-center w-10 h-10 dark:hover:bg-blue-970 dark:bg-blue-800 dark:bg-opacity-25 bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear"
+                                rel="nofollow">
+                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        class="stroke-current transition duration-300 ease-linear dark:text-blue-300 text-blue-700 group-hover:text-white"
+                                        d="M7.13998 9.96507L8.8695 8.23767M7.13998 9.96507C5.87212 11.2337 0.538685 9.00354 1.49647 6.18315C2.45426 3.36275 12.943 -0.0813092 15.0632 2.04019C17.1834 4.16169 13.7258 14.6899 10.9196 15.6121C8.11337 16.5342 5.87212 11.2337 7.13998 9.96507Z"
+                                        stroke="currentColor" stroke-width="1.56405" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-9 grid-cols-1 xl:gap-20 gap-7 mt-10">
+                <div class="md:col-span-4">
+                    <div class="relative flex flex-col md:items-start md:mx-0  mx-auto w-fit-content items-center">
+                        <h3 class="text-xl relative font-rokh font-bold dark:text-white text-biscay-700 mb-4 z-10">درباره دانشگاه
+                        </h3>
+                        <span
+                            class="z-0 w-4 h-4 flex absolute bg-blue-700 opacity-20 top-0 rounded-full -right-2"></span>
+                    </div>
+
+                    <div class="flex relative ">
+                        <span
+                            class="md:flex hidden absolute top-1 right-0 w-1 h-1 mt-2 bg-blue-700 opacity-30 rounded-full"></span>
+                        <div class="md:mr-2 md:text-right text-center">
+                            <p
+                                class="text-base mb-2 md:w-10/12 w-full md:text-right text-center leading-7 dark:text-slate-400 text-slate-600 ">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
+                                فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="md:col-span-2">
+                    <div class="relative flex md:items-start md:mx-0  mx-auto w-fit-content items-center">
+                        <h3 class="text-xl relative font-rokh font-bold dark:text-white text-biscay-700 mb-4 z-10">بخش های سایت
+                        </h3>
+                        <span
+                            class="z-0 w-4 h-4 flex absolute bg-blue-700 opacity-20 top-0 rounded-full -right-2"></span>
+                    </div>
+                    <ul class="flex flex-col md:items-start items-center dark:text-slate-400">
+                        <li class="mb-3 last:mb-0 flex items-center">
+                            <span
+                                class="md:flex hidden w-1 h-1 ml-2 mb-1 dark:text-gray-940 bg-blue-700 opacity-30 rounded-full"></span>
+                            <a class="text-base text-slate-600 dark:text-gray-920 transition transform dark:hover:text-blue-450 hover:text-dark-700 duration-200 ease-linear"
+                                href="/terms">قوانین و مقررات </a>
+                        </li>
+                        <li class="mb-3 last:mb-0 flex it<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amini University</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/dependencies/select2.min.css">
+    <link rel="stylesheet" href="css/dependencies/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body class="font-irYekan">
+    <header class="fixed z-10 bg-gradient-to-b from-sky-800 w-full">
+        <div class="container py-3">
+            <div class="flex gap-2 items-center justify-between">
+                <div><img src="images/logo.png" alt="logo" class="w-12"></div>
+                <div>
+                    <input type="text" placeholder="جست و جو ..."
+                        class="bg-gray-200 placeholder-gray-800 hidden md:block py-3 px-4 text-xs rounded-xl border-none outline-none w-24 md:w-80" />
+                </div>
+                <div class="flex gap-4 items-center">
+                    <label class="flex bg-gray-200 rounded-xl">
+                        <!-- this hidden checkbox controls the state -->
+                        <input type="checkbox" class="theme-controller hidden" value="dark" />
+                        <!-- sun icon -->
+                        <i class="fa-regular fa-sun-bright p-3"></i>
+                        <!-- moon icon -->
+                        <i class="fa-regular fa-moon-stars p-3"></i>
+                    </label>
+                    <select class="bg-gray-200" id="lang" name="state">
+                        <option value="fa">فارسی</option>
+                        <option value="en">انگلیسی</option>
+                    </select>
+                    <div class="flex">
+                        <a href="#"
+                            class="flex items-center gap-2 bg-gray-200 text-gray-800 pl-6 py-3 px-3 text-xs rounded-xl">
+                            <span>ورود</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 bg-blue-500 text-white -mr-5 py-3 px-3 text-xs rounded-xl">
+                            <span>ثبت نام</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-add" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                                <path
+                                    d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="dark:bg-slate-900">
+        <section class="relative group">
+            <div class="h-[calc(100vh-81px)]">
+                <div class="swiper head-slider h-full">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <img src="images/001.jpg" alt="" class="w-full">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/002.jpg" alt="" class="w-full">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/003.jpg" alt="" class="w-full">
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- If we need scrollbar -->
+                    <div class="swiper-scrollbar"></div>
+                </div>
+            </div>
+        </section>
+        <section class="mt-20">
+            <div class="container">
+                <div class="flex items-center justify-between bg-gradient-to-l from-gray-200 to-transparent p-3 dark:bg-blue-500 rounded-xl">
+                    <div class="flex items-center gap-x-3">
+                        <div class="flex items-center gap-1">
+                            <span class="hidden sm:inline-block w-2 h-2 bg-red-500 rounded-full"></span>
+                            <span class="hidden sm:inline-block w-3 h-3 bg-red-500 rounded-full"></span>
+                        </div>
+                        <h2 class="font-rokh text-2xl/normal font-bold">اطلاعیه ها</h2>
+                    </div>
+                    <a href="#" class="flex items-center gap-x-2 p-3 hover">
+                        <span>آرشیو اطلاعیه ها</span>
+                        <i class="fa-solid fa-arrow-left-to-arc text-slate-100 p-2 bg-gray-300 rounded-tl-xl rounded-bl-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mt-20">
+            <div class="container">
+                <div class="flex items-center justify-between bg-gradient-to-l from-gray-200 to-transparent p-3 rounded-xl">
+                    <div class="flex items-baseline gap-x-3">
+                    <div class="flex items-center gap-1">
+                            <span class="hidden sm:inline-block w-2 h-2 bg-sky-500 rounded-full"></span>
+                            <span class="hidden sm:inline-block w-3 h-3 bg-sky-500 rounded-full"></span>
+                        </div>
+                        <h2 class="font-rokh text-2xl font-bold">اخبار</h2>
+                    </div>
+                    <a href="#" class="flex

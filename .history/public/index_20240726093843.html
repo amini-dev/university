@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amini University</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/dependencies/select2.min.css">
+    <link rel="stylesheet" href="css/dependencies/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body class="font-irYekan">
+    <header class="fixed top-0 z-20 bg-white w-full">
+        <div class="container py-3">
+            <div class="flex gap-2 items-center justify-between">
+                <div><img src="images/logo-dark.png" alt="logo" class="w-12"></div>
+                <div>
+                    <input type="text" placeholder="جست و جو ..."
+                        class="bg-slate-200 placeholder-slate-800 hidden md:block py-3 px-4 text-xs rounded-xl border-none outline-none w-24 md:w-80" />
+                </div>
+                <div class="flex gap-4 items-center">
+                    <label class="flex bg-slate-200 rounded-xl">
+                        <!-- this hidden checkbox controls the state -->
+                        <input type="checkbox" class="theme-controller hidden" value="dark" />
+                        <!-- sun icon -->
+                        <i class="fa-regular fa-sun-bright p-2"></i>
+                        <!-- moon icon -->
+                        <i class="fa-regular fa-moon-stars p-2"></i>
+                    </label>
+                    <select class="bg-slate-200" id="lang" name="state">
+                        <option value="fa">فارسی</option>
+                        <option value="en">انگلیسی</option>
+                    </select>
+                    <div class="flex">
+                        <a href="#"
+                            class="flex items-center gap-2 bg-slate-200 text-slate-800 pl-6 py-3 px-3 text-xs rounded-xl">
+                            <span>ورود</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 transition-all text-white -mr-5 py-3 px-3 text-xs rounded-xl">
+                            <span>ثبت نام</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-add" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                                <path
+                                    d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="dark:bg-dark-850 z-10 pt-24">
+        <!-- Hero slider section -->
+        <section class="relative group">
+            <div class="container">
+                <div class="h-[70vh]">
+                    <div class="swiper rounded-xl head-slider h-full">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide">
+                                <img src="images/001.jpg" alt="" class="w-full">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images/002.jpg" alt="" class="w-full">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images/003.jpg" alt="" class="w-full">
+                            </div>
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <div class="swiper-scrollbar"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End hero slider section -->
+
+        <!-- Introduce section -->
+        <section class="-mt-12 relative z-10">
+            <div class="container">
+                <div class="flex flex-row justify-evenly">
+                    <div class="flex flex-row items-center">
+                        <a href="#" class="flex items-center h-full text-4xl bg-blue-600 text-white p-5 rounded-r-xl">
+                            <i class="fa-light fa-graduation-cap"></i>
+                        </a>
+                        <h3
+                            class="flex flex-col gap-y-2 text-slate-200 p-4 pr-2 bg-gradient-to-tl from-blue-600 from-50% to-slate-300 rounded-l-xl">
+                            <a href="#" class="w-fit px-2 py-1 rounded-xl text-slate-800 bg-white text-sm"> گروه آموزشی
+                            </a>
+                            <a href="#"> گروه های آموزشی و رشته های تحصیلی </a>
+                        </h3>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <a href="#" class="flex items-center h-full text-4xl bg-blue-600 text-white p-5 rounded-r-xl">
+                            <i class="fa-light fa-buildings"></i>
+                        </a>
+                        <h3
+                            class="flex flex-col gap-y-2 text-slate-200 p-4 pr-2 bg-gradient-to-tl from-blue-600 from-50% to-slate-300 rounded-l-xl">
+                            <a href="#" class="w-fit px-2 py-1 rounded-xl text-slate-800 bg-white text-sm"> بخش های
+                                مختلف </a>
+                            <a href="#"> آشنایی با بخش های مختلف دانشگاه </a>
+                        </h3>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <a href="#" class="flex items-center h-full text-4xl bg-blue-600 text-white p-5 rounded-r-xl">
+                            <i class="fa-light fa-memo-circle-check"></i>
+                        </a>
+                        <h3
+                            class="flex flex-col gap-y-2 text-slate-200 p-4 pr-2 bg-gradient-to-tl from-blue-600 from-50% to-slate-300 rounded-l-xl">
+                            <a href="#" class="w-fit px-2 py-1 rounded-xl text-slate-800 bg-white text-sm"> جذب و پذیرش
+                            </a>
+                            <a href="#"> نحوه پذیرش و زمان ثبت نام </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Introduce section -->
+
+        <!-- Announcement section -->
+        <section class="mt-10">
+            <!-- Announcement section header -->
+            <div class="container">
+                <div
+                    class="flex items-center justify-between bg-gradient-to-l from-red-200 to-transparent p-3 pt-5 pr-5 dark:bg-blue-500 rounded-xl">
+                    <div class="flex items-center gap-x-3">
+                        <div class="flex items-center gap-1">
+                            <span class="hidden sm:inline-block w-2 h-2 bg-red-500 rounded-full"></span>
+                            <span class="hidden sm:inline-block w-3 h-3 bg-red-500 rounded-full"></span>
+                        </div>
+                        <h2 class="font-rokh text-2xl/normal font-bold">اطلاعیه ها</h2>
+                    </div>
+                    <a href="#" class="flex items-center group">
+                        <span
+                            class="rounded-xl leading-9 px-3 -ml-4 group-hover:-ml-3 transition-all bg-white z-10 text-sm">آرشیو
+                            اطلاعیه ها</span>
+                        <i
+                            class="fa-solid fa-arrow-left-to-arc text-white leading-9 pl-3 pr-6 bg-red-500 group-hover:bg-red-300 transition-all rounded-tl-xl rounded-bl-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Announcement section body -->
+            <div class="container">
+                <div
+                    class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 p-5 rounded-xl bg-gradient-to-br from-transparent from-60% to-red-200 dark:to-dark-900">
+                    <div class="p-4 shadow-2xl rounded-2xl bg-gradient-to-br from-transparent from-40% to-red-200 dark:bg-none dark:bg-dark-900">
+                        <div class="relative">
+                            <a href="#">
+                                <img src="images/announcement/001.jpg" alt="" class="w-full h-[180px] rounded-xl">
+                            </a>
+                            <div
+                                class="flex flex-col items-center w-fit shadow-lg p-3 gap-2 bg-white text-sm rounded-xl absolute left-5 -bottom-1/4">
+                                <i class="fa-regular fa-message-lines"></i>
+                                <span>۵</span>
+                            </div>
+                        </div>
+                        <div class="flex w-fit bg-white text-slate-600 text-sm rounded-lg px-4 py-2 gap-2 mt-3">
+                            <span class="fa-regular fa-calendar-clock"></span>
+                            <span>۳۱ تیر ۱۴۰۳</span>
+                        </div>
+                        <div class="mt-3">
+                            <h3 class="line-clamb-2 dark:text-white">
+                                <a href="#">
+                                    روش های که میتوانید وارد المپیاد بازی های رایانه ای شوید
+                                </a>
+                            </h3>
+                            <span class="inline-block w-full border h-[1px] "></span>
+                            <div class="text-slate-600 text-sm/6 dark:text-gray-950">
+                                <p class="line-clamp-3">دانشجويان گرامي ميتوانند براي مشاهده كتابهاي خريداري شده از
+                                    سي و
+                                    پنجمين نمايشگاه بين المللي كتاب تهران سال 1403 به كتابخانه مركزي مراجعه نمايند.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 shadow-2xl rounded-2xl dark:bg-slate-800">
+                        <div class="relative">
+                            <a href="#">
+                                <img src="images/announcement/005.jpg" alt="" class="w-full h-[180px] rounded-xl">
+                            </a>
+                            <div
+                                class="flex flex-col items-center w-fit shadow-lg p-3 gap-2 bg-white text-sm rounded-xl absolute left-5 -bottom-1/4">
+                                <i class="fa-regular fa-message-lines"></i>
+                                <span>۳</span>
+                            </div>
+                        </div>
+                        <div class="flex w-fit bg-slate-200 text-slate-600 text-sm rounded-lg px-4 py-2 gap-2 mt-3">
+                            <span class="fa-regular fa-calendar-clock"></span>
+                            <span>۱۸ مرداد ۱۴۰۳</span>
+                        </div>
+                        <div class="mt-3">
+                            <h3 class="line-clamp-2 dark:text-white">
+                                <a href="#">
+                                    برج نوآوری پارک علم و فناوری دانشگاه شهید بهشتی به نام شهید رئیسی
+                                    نامگذاری شد
+                                </a>
+                            </h3>
+                            <span class="inline-block w-full border h-[1px] dark:text-gray-300"></span>
+                            <div class="text-slate-600 text-sm/6 dark:text-slate-300">
+                                <p class="line-clamp-3">
+                                    مراسم بزرگداشت جهلین روز شهادت آیت الله سیدابرهیم رئیسی، رئیس جمهور و یارانش با حضور
+                                    جمع کثیری از دانشگاهیان شهید بهشتی، شنبه نهم تیر 1403 برگزار شد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 shadow-2xl rounded-2xl">
+                        <div class="relative">
+                            <a href="#">
+                                <img src="images/announcement/003.jpg" alt="" class="w-full h-[180px] rounded-xl">
+                            </a>
+                            <div
+                                class="flex flex-col items-center w-fit shadow-lg p-3 gap-2 bg-white text-sm rounded-xl absolute left-5 -bottom-1/4">
+                                <i class="fa-regular fa-message-lines"></i>
+                                <span>۹</span>
+                            </div>
+                        </div>
+                        <div class="flex w-fit bg-slate-200 text-slate-600 text-sm rounded-lg px-4 py-2 gap-2 mt-3">
+                            <span class="fa-regular fa-calendar-clock"></span>
+                            <span>۳۱ تیر ۱۴۰۳</span>
+                        </div>
+                        <div class="mt-3">
+                            <h3 class="line-clamb-2">
+                                <a href="#">
+                                    روش های که میتوانید وارد المپیاد بازی های رایانه ای شوید
+                                </a>
+                            </h3>
+                            <span class="inline-block w-full border h-[1px] "></span>
+                            <div class="text-slate-600 text-sm/6">
+                                <p class="line-clamp-3">دانشجويان گرامي ميتوانند براي مشاهده كتابهاي خريداري شده از
+                                    سي و
+                                    پنجمين نمايشگاه بين المللي كتاب تهران سال 1403 به كتابخانه مركزي مراجعه نمايند.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 shadow-2xl rounded-2xl">
+                        <div class="relative">
+                            <a href="#">
+                                <img src="images/announcement/004.jpg" alt="" class="w-full h-[180px] rounded-xl">
+                            </a>
+                            <div
+                                class="flex flex-col items-center w-fit shadow-lg p-3 gap-2 bg-white text-sm rounded-xl absolute left-5 -bottom-1/4">
+                                <i class="fa-regular fa-message-lines"></i>
+                                <span>۷</span>
+                            </div>
+                        </div>
+                        <div class="flex w-fit bg-slate-200 text-slate-600 text-sm rounded-lg px-4 py-2 gap-2 mt-3">
+                            <span class="fa-regular fa-calendar-clock"></span>
+                            <span>۲۵ تیر ۱۴۰۳</span>
+                        </div>
+                        <div class="mt-3">
+                            <h3 class="line-clamb-2">
+                                <a href="#">
+                                    سومین دوره آموزشی فرهنگی دانشجویان بین المللی برگزار شد
+                                </a>
+                            </h3>
+                            <span class="inline-block w-full border h-[1px] "></span>
+                            <div class="text-slate-600 text-sm/6">
+                                <p class="line-clamp-3">دانشجويان گرامي ميتوانند براي مشاهده كتابهاي خريداري شده از
+                                    سي و
+                                    پنجمين نمايشگاه بين المللي كتاب تهران سال 1403 به كتابخانه مركزي مراجعه نمايند.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End announcement section -->
+
+        <!-- News section -->
+        <section class="mt-10">
+            <!-- News section header -->
+            <div class="container">
+                <div
+                    class="flex items-center justify-between bg-gradient-to-l from-sky-200 to-transparent p-3 pt-5 pr-5 rounded-xl">
+                    <div class="flex items-baseline gap-x-3">
+                        <div class="flex items-center gap-1">
+                            <span class="hidden sm:inline-block w-2 h-2 bg-sky-500 rounded-full"></span>
+                            <span class="hidden sm:inline-block w-3 h-3 bg-sky-500 rounded-full"></span>
+                        </div>
+                        <h2 class="font-rokh text-2xl font-bold">اخبار</h2>
+                    </div>
+                    <a href="#" class="flex items-center group">
+                        <span
+                            class="rounded-xl leading-9 px-3 -ml-4 group-hover:-ml-3 transition-all bg-white z-10 text-sm">آرشیو
+                            اخبار</span>
+                        <i
+                            class="fa-solid fa-arrow-left-to-arc text-white leading-9 pl-3 pr-6 bg-sky-500 group-hover:bg-sky-300 transition-all rounded-tl-xl rounded-bl-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- News section body -->
+            <div class="container">
+                <div
+                    class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 p-5 rounded-xl bg-gradient-to-br from-transparent from-60% to-sky-200">
+                    <div class="p-4 shadow-2xl rounded-2xl bg-gradient-to-br from-transparent from-40% to-sky-200">
+                        <div class="relative">
+                            <a href="#">
+                                <img src="images/announcement/004.jpg" alt="" class="w-full h-[180px] rounded-xl">
+                            </a>
+                            <div
+                                class="flex flex-col items-center w-fit shadow-lg p-3 gap-2 bg-white text-sm rounded-xl absolute left-5 -bottom-1/4">
+                                <i class="fa-regular fa-message-lines"></i>
+                                <span>۷</span>
+                            </div>
+                        </div>
+                        <div class="flex w-fit bg-white text-slate-600 text-sm rounded-lg px-4 py-2 gap-2 mt-3">
+                            <span class="fa-regular fa-calendar-clock"></span>
+                            <span>۲۵ تیر ۱۴۰۳</span>
+                        </div>
+                        <div class="mt-3">
+                            <h3 class="line-clamb-2">
+                                <a href="#">
+                                    سومین دوره آموزشی فرهنگی دانشجویان بین المللی برگزار شد
+                                </a>
+                            </h3>
+                            <span class="inline-block w-full border h-[1px] "></span>
+                            <div class="text-slate-600 text-sm/6">
+                                <p class="line-clamp-3">دانشجويان گرامي ميتوانند براي مشاهده كتابهاي خريداري شده از
+                                    سي و
+                                    پنجمين نمايشگاه بين المللي كتاب تهران سال 1403 به كتابخانه مركزي مراجعه نمايند.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 shadow-2xl rounded-2xl">
+                        <div class="relative">
+                            <a href="#">
+                                <img src="images/announcement/003.jpg" alt="" class="w-full h-[180px] rounded-xl">
+                            </a>
+                            <div
+                                class="flex flex-col items-center w-fit shadow-lg p-3 gap-2 bg-white text-sm rounded-xl absolute left-5 -bottom-1/4">
+                                <i class="fa-regular fa-message-lines"></i>
+                                <span>۹</span>
+                            </div>
+                        </div>
+                        <div class="flex w-fit bg-slate-200 text-slate-600 text-sm rounded-lg px-4 py-2 gap-2 mt-3">
+                            <span class="fa-regular fa-calendar-clock"></span>
+                            <span>۳۱ تیر ۱۴۰۳</span>
+                        </div>
+                        <div class="mt-3">
+                            <h3 class="line-clamb-2">
+                                <a href="#">
+                                    روش های که میتوانید وارد المپیاد بازی های رایانه ای شوید
+                                </a>
+                            </h3>
+                            <span class="inline-block w-full border h-[1px] "></span>
+                            <div class="text-slate-600 text-sm/6">
+                                <p class="line-clamp-3">دانشجويان گرامي ميتوانند براي مشاهده كتابهاي خريداري شده از
+                                    سي و
+                                    پنجمين نمايشگاه بين المللي كتاب تهران سال 1403 به كتابخانه مركزي مراجعه نمايند.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 shadow-2xl rounded-2xl">
+                        <div class="relative">
+                            <a href="#">
+                                <img src="images/announcement/005.jpg" alt="" class="w-full h-[180px] rounded-xl">
+                            </a>
+                            <div
+                                class="flex flex-col items-center w-fit shadow-lg p-3 gap-2 bg-white text-sm rounded-xl absolute left-5 -bottom-1/4">
+                                <i class="fa-regular fa-message-lines"></i>
+                                <span>۳</span>
+                            </div>
+                        </div>
+                        <div class="flex w-fit bg-slate-200 text-slate-600 text-sm rounded-lg px-4 py-2 gap-2 mt-3">
+                            <span class="fa-regular fa-calendar-clock"></span>
+                            <span>۱۸ مرداد ۱۴۰۳</span>
+                        </div>
+                        <div class="mt-3">
+                            <h3 class="line-clamp-2">
+                                <a href="#">
+                                    برج نوآوری پارک علم و فناوری دانشگاه شهید بهشتی به نام شهید رئیسی
+                                    نامگذاری شد
+                                </a>
+                            </h3>
+                            <span class="inline-block w-full border h-[1px] "></span>
+                            <div class="text-slate-600 text-sm/6">
+                                <p class="line-clamp-3">
+                                    مراسم بزرگداشت جهلین روز شهادت آیت الله سیدابرهیم رئیسی، رئیس جمهور و یارانش با حضور
+                                    جمع کثیری از دانشگاهیان شهید بهشتی، شنبه نهم تیر 1403 برگزار شد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 shadow-2xl rounded-2xl">
+                        <div class="relative">
+                            <a href="#">
+                                <img src="images/announcement/001.jpg" alt="" class="w-full h-[180px] rounded-xl">
+                            </a>
+                            <div
+                                class="flex flex-col items-center w-fit shadow-lg p-3 gap-2 bg-white text-sm rounded-xl absolute left-5 -bottom-1/4">
+                                <i class="fa-regular fa-message-lines"></i>
+                                <span>۵</span>
+                            </div>
+                        </div>
+                        <div class="flex w-fit bg-slate-200 text-slate-600 text-sm rounded-lg px-4 py-2 gap-2 mt-3">
+                            <span class="fa-regular fa-calendar-clock"></span>
+                            <span>۳۱ تیر ۱۴۰۳</span>
+                        </div>
+                        <div class="mt-3">
+                            <h3 class="line-clamb-2">
+                                <a href="#">
+                                    روش های که میتوانید وارد المپیاد بازی های رایانه ای شوید
+                                </a>
+                            </h3>
+                            <span class="inline-block w-full border h-[1px] "></span>
+                            <div class="text-slate-600 text-sm/6">
+                                <p class="line-clamp-3">دانشجويان گرامي ميتوانند براي مشاهده كتابهاي خريداري شده از
+                                    سي و
+                                    پنجمين نمايشگاه بين المللي كتاب تهران سال 1403 به كتابخانه مركزي مراجعه نمايند.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End news section -->
+
+        <!-- Educatoin groups section -->
+        <section class="mt-10">
+            <div>
+                <div class="text-center">
+                    <h3 class="font-rokh font-bold text-2xl">
+                        <span class="bg-red-500 align-middle inline-block h-[3px]"> &nbsp; &nbsp; &nbsp;</span>
+                        گروه های آموزشی
+                        <span class="bg-red-500 align-middle inline-block h-[3px]"> &nbsp; &nbsp; &nbsp;</span>
+                    </h3>
+                    <p>
+                        Educational groups
+                    </p>
+                </div>
+                <div class="mt-10">
+                    <div class="container">
+                        <div class="swiper education-group-slider rounded-xl relative">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <div class="flex justify-center">
+                                        <div class="bg-gradient-to-br from-transparent to-red-200 rounded-xl">
+                                            <div class="w-full p-4">
+                                                <a href="#"
+                                                    class="inline-block h-48 overflow-hidden rounded-xl shadow-lg"><img
+                                                        class="w-full h-full transform transition duration-300 hover:scale-110"
+                                                        src="images/education-group/architect-400x300.jpg.webp"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="px-4 pb-4">
+                                                <h3>
+                                                    <a href="#"
+                                                        class="flex items-center p-1 bg-white rounded-xl shadow-lg">
+                                                        <span class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg">
+                                                            نام گروه :
+                                                        </span>
+                                                        مهندسی معماری
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="flex justify-center">
+                                        <div class="bg-gradient-to-br from-transparent to-red-200 rounded-xl">
+                                            <div class="w-full p-4">
+                                                <a href="#"
+                                                    class="inline-block h-48 overflow-hidden rounded-xl shadow-lg"><img
+                                                        class="w-full h-full transform transition duration-300 hover:scale-110"
+                                                        src="images/education-group/islamic-history-400x300.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="px-4 pb-4">
+                                                <h3>
+                                                    <a href="#"
+                                                        class="flex items-center p-1 bg-white rounded-xl shadow-lg">
+                                                        <span class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg">
+                                                            نام گروه :
+                                                        </span>
+                                                        تاریخ اسلام
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="flex justify-center">
+                                        <div class="bg-gradient-to-br from-transparent to-red-200 rounded-xl">
+                                            <div class="w-full p-4">
+                                                <a href="#"
+                                                    class="inline-block h-48 overflow-hidden rounded-xl shadow-lg"><img
+                                                        class="w-full h-full transform transition duration-300 hover:scale-110"
+                                                        src="images/education-group/civilengineer-400x300.webp"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="px-4 pb-4">
+                                                <h3>
+                                                    <a href="#"
+                                                        class="flex items-center p-1 bg-white rounded-xl shadow-lg">
+                                                        <span class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg">
+                                                            نام گروه :
+                                                        </span>
+                                                        مهندسی عمران
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="flex justify-center">
+                                        <div class="bg-gradient-to-br from-transparent to-red-200 rounded-xl">
+                                            <div class="w-full p-4">
+                                                <a href="#"
+                                                    class="inline-block h-48 overflow-hidden rounded-xl shadow-lg"><img
+                                                        class="w-full h-full transform transition duration-300 hover:scale-110"
+                                                        src="images/education-group/gavel-with-books-old-wooden-desk-400x300.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="px-4 pb-4">
+                                                <h3>
+                                                    <a href="#"
+                                                        class="flex items-center p-1 bg-white rounded-xl shadow-lg">
+                                                        <span class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg">
+                                                            نام گروه :
+                                                        </span>
+                                                        حقوق جزا و جرم شناسی
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="flex justify-center">
+                                        <div class="bg-gradient-to-br from-transparent to-red-200 rounded-xl">
+                                            <div class="w-full p-4">
+                                                <a href="#"
+                                                    class="inline-block h-48 overflow-hidden rounded-xl shadow-lg"><img
+                                                        class="w-full h-full transform transition duration-300 hover:scale-110"
+                                                        src="images/education-group/front-view-plant-growing-from-golden-coins-400x300.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="px-4 pb-4">
+                                                <h3>
+                                                    <a href="#"
+                                                        class="flex items-center p-1 bg-white rounded-xl shadow-lg">
+                                                        <span class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg">
+                                                            نام گروه :
+                                                        </span>
+                                                        علوم اقتصادی
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                            <!-- <div class="flex justify-between items-center w-full h-full z-10 absolute top-0">
+                                <div class="educ-button-prev"><i class="fa-regular fa-chevron-right"></i></div>
+                                <div class="educ-button-next"><i class="fa-regular fa-chevron-left"></i></div>
+                            </div> -->
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End education groups section -->
+        
+        <!-- Study section -->
+        <section class="mt-10">
+            <div class="container">
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <a href="#"
+                            class="flex items-end h-full text-2xl bg-blue-600 text-white px-3 pt-4 pb-3 rounded-b-md rounded-t-[100%]">
+                            <i class="fa-light fa-graduation-cap"></i>
+                        </a>
+                        <h3 class="flex flex-col h-full pr-3">
+                            <a href="#" class="flex items-center h-full">
+                                گروه مهندسی عمران
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End study section -->
+    </main>
+
+    <script src="js/dependencies/jquery.min.js"></script>
+    <script src="js/dependencies/select2.min.js"></script>
+    <script src="js/dependencies/swiper-bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/dependencies/fontAwesome.css">
+</body>
+
+</html>

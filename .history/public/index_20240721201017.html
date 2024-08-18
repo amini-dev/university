@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amini University</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/dependencies/select2.min.css">
+    <link rel="stylesheet" href="css/dependencies/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body class="font-irYekan">
+    <header class="fixed z-20 bg-gradient-to-b from-sky-800 w-full">
+        <div class="container py-3">
+            <div class="flex gap-2 items-center justify-between">
+                <div><img src="images/logo.png" alt="logo" class="w-12"></div>
+                <div>
+                    <input type="text" placeholder="جست و جو ..."
+                        class="bg-gray-200 placeholder-gray-800 hidden md:block py-3 px-4 text-xs rounded-xl border-none outline-none w-24 md:w-80" />
+                </div>
+                <div class="flex gap-4 items-center">
+                    <label class="flex bg-gray-200 rounded-xl">
+                        <!-- this hidden checkbox controls the state -->
+                        <input type="checkbox" class="theme-controller hidden" value="dark" />
+                        <!-- sun icon -->
+                        <i class="fa-regular fa-sun-bright p-2"></i>
+                        <!-- moon icon -->
+                        <i class="fa-regular fa-moon-stars p-2"></i>
+                    </label>
+                    <select class="bg-gray-200" id="lang" name="state">
+                        <option value="fa">فارسی</option>
+                        <option value="en">انگلیسی</option>
+                    </select>
+                    <div class="flex">
+                        <a href="#"
+                            class="flex items-center gap-2 bg-gray-200 text-gray-800 pl-6 py-3 px-3 text-xs rounded-xl">
+                            <span>ورود</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 transition-all text-white -mr-5 py-3 px-3 text-xs rounded-xl">
+                            <span>ثبت نام</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-add" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                                <path
+                                    d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="dark:bg-slate-900 z-10">
+        <section class="relative group">
+            <div class="h-[calc(100vh-81px)]">
+                <div class="swiper head-slider h-full">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <img src="images/001.jpg" alt="" class="w-full">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/002.jpg" alt="" class="w-full">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/003.jpg" alt="" class="w-full">
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- If we need scrollbar -->
+                    <div class="swiper-scrollbar"></div>
+                </div>
+            </div>
+        </section>
+        <section class="mt-20">
+            <div class="container">
+                <div
+                    class="flex items-center justify-between bg-gradient-to-l from-red-200 to-transparent p-3 dark:bg-blue-500 rounded-xl">
+                    <div class="flex items-center gap-x-3">
+                        <div class="flex items-center gap-1">
+                            <span class="hidden sm:inline-block w-2 h-2 bg-red-500 rounded-full"></span>
+                            <span class="hidden sm:inline-block w-3 h-3 bg-red-500 rounded-full"></span>
+                        </div>
+                        <h2 class="font-rokh text-2xl/normal font-bold">اطلاعیه ها</h2>
+                    </div>
+                    <a href="#" class="flex items-center group">
+                        <span
+                            class="rounded-tl-2xl rounded-bl-2xl leading-9 px-3 -ml-3 hover:-ml-4 transition-all bg-white z-10 text-sm">آرشیو
+                            اطلاعیه ها</span>
+                        <i
+                            class="fa-solid fa-arrow-left-to-arc text-white leading-9 pl-3 pr-6 bg-red-200 group-hover:bg-red-500 transition-all rounded-tl-xl rounded-bl-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="w-1/4">
+                    <div class="p-4 shadow-2xl rounded-2xl">
+                        <div class="relative">
+                            <img src="images/announcement/001.jpg" alt="" class="rounded-xl">
+                            <div class="flex flex-col items-center w-fit p-3 gap-2 bg-white rounded-xl absolute left-5 -bottom-1/4">
+                                <i class="fa-regular fa-message-lines"></i>
+                                <span>۲</span>
+                            </div>
+                        </div>
+                        <div class="flex w-fit bg-gray-200 text-slate-600 text-sm rounded-lg px-4 py-2 gap-2 mt-3">
+                            <span class="fa-regular fa-calendar-clock"></span>
+                            <span>۳۱ تیر ۱۴۰۳</span>
+                        </div>
+                        <div class="mt-3">
+                            <h3>روش های که میتوانید وارد المپیاد بازی های رایانه ای شوید</h3>
+                            <span class="inline-block w-full border h-[1px] "></span>
+                            <div class="text-slate-600 text-sm/6">
+                                <p class="line-clamp-3">دانشجويان گرامي ميتوانند براي مشاهده كتابهاي خريداري شده از سي و پنجمين نمايشگاه بين المللي كتاب تهران سال 1403 به كتابخانه مركزيew.scm.numberOfVisibleViews":1,"scm.viewState2":1,"workbench.view.extension.project-manager.numberOfVisibleViews":1,"output.activechannel":1,"terminal.integrated.layoutInfo":1,"debugStartLanguage":1,"mhutchie.git-graph":1,"scm:view:visibleRepositories":1,"workbench.view.debug.numberOfVisibleViews":1,"memento/multiDiffEditor":1,"memento/workbench.view.search":1,"workbench.view.search.numberOfVisibleViews":1,"workbench.sidebar.activeviewletid":1,"terminal.integrated.bufferState":1,"lifecyle.lastShutdownReason":1}�)��      	�    ����������� � �                                                                                                                   5output.activechanneltasksW1�debug.selectedrootfile:///c%3A/laragon/www/my-resume/university/.vscode/launch.json�Q=�w__$__targetStorageMarker{"workbench.panel.markers":1,"workbench.panel.output":1,"terminal":1,"workbench.explorer.views.state":1,"workbench.scm.views.state":1,"workbench.view.search.state":1,"workbench.activity.viewletsWorkspaceState":1,"workbench.panel.viewContainersWorkspaceState":1,"workbench.view.explorer.numberOfVisibleViews":1,"workbench.explorer.treeViewState":1,"workbench.view.extension.bookmarks.state":1,"workbench.view.extension.project-manager.state":1,"debug.selectedroot":1,"output.activechannel":1,"workbench.view.debug.state":1,"workbench.panel.repl":1,"debug.uxstate":1}�ai�kworkbench.view.extension.project-manager.state{"projectsExplorerFavorites":{"collapsed":false,"isHidden":true},"projectsExplorerGit":{"collapsed":false,"isHidden":true},"projectsExplorerSVN":{"collapsed":false,"isHidden":true},"projectsExplorerAny":{"collapsed":false,"isHidden":true},"projectsExplorerMercurial":{"collapsed":false,"isHidden":true},"projectsExplorerVSCode":{"collapsed":false,"isHidden":true

@@ -1,0 +1,20 @@
+{
+    "devDependencies": {
+        "tailwindcss": "^3.4.7",
+        "vite": "^5.3.4"
+    },
+    "scripts": {
+        "watch": "npx tailwindcss -i ./src/css/app.css -o ./public/css/app.css --watch",
+        "minify": "npx tailwindcss -i ./src/css/app.css -o ./public/css/app.css --minify",
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "caniuse-lite": "^1.0.30001616",
+        "jquery": "^3.7.1",
+        "postcss": "^8.4.40",
+        "select2": "^4.1.0-rc.0",
+        "swiper": "^11.1.5"
+    }
+}

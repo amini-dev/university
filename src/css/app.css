@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    /* Show scrollbar */
+    .scrollbar::-webkit-scrollbar {
+        display: block;
+    }
+    .scrollbar {
+        -ms-overflow-style: auto; /* IE and Edge */
+        scrollbar-width: auto; /* Firefox */
+    }
+}
+
+.select2-selection__rendered {
+    @apply bg-slate-200 rounded-xl !text-xs w-full py-3;
+}
+.select2-selection {
+    @apply !border-none !flex items-center;
+}
+.select2-dropdown {
+    @apply bg-slate-200 border-none rounded-lg;
+}
+.select2-search__field {
+    @apply outline-none;
+}
+.select2-results__option {
+    @apply rounded-lg text-xs;
+}
+.select2-results__option--selected {
+    @apply !bg-slate-200;
+}
+.select2-results__option--highlighted {
+    @apply !bg-blue-500;
+}
+.select2-search__field {
+    @apply bg-white;
+}
+.swiper-button-prev,
+.swiper-button-next {
+    @apply p-6 bg-white rounded-full;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    @apply text-2xl text-blue-600;
+}
