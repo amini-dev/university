@@ -72,7 +72,7 @@
 
                         <ul class="flex flex-col space-y-1">
                             <li x-data="{ open: false }">
-                                <button
+                                <button 
                                     class="w-full flex items-center gap-x-2 relative transition-all hover:text-foreground py-2 text-muted"
                                     x-bind:class="open ? 'text-foreground' : 'text-muted'" x-on:click="open = !open">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -94,7 +94,7 @@
                                 </button>
                                 <ul class="flex flex-col relative before:content-[''] before:absolute before:inset-y-3 before:right-3 before:w-px before:bg-zinc-200 dark:before:bg-slate-400 py-3 pr-5"
                                     x-show="open" style="display: none;">
-
+                                    
                                     <li>
                                         <a href="#"
                                             class="w-full flex items-center gap-x-2 bg-transparent rounded-xl text-slate-400 transition-all group/nav-item hover:text-black dark:hover:text-white py-2 px-3">
@@ -150,7 +150,7 @@
                                 </button>
                                 <ul class="flex flex-col relative before:content-[''] before:absolute before:inset-y-3 before:right-3 before:w-px before:bg-zinc-200 dark:before:bg-slate-400 py-3 pr-5"
                                     x-show="open" style="display: none;">
-
+                                    
                                     <li>
                                         <a href="#"
                                             class="w-full flex items-center gap-x-2 bg-transparent rounded-xl text-slate-400 transition-all group/nav-item hover:text-black dark:hover:text-white py-2 px-3">
@@ -193,7 +193,7 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            
                             <li x-data="{ open: false }">
                                 <button type="button"
                                     class="w-full flex items-center gap-x-2 relative transition-all hover:text-foreground py-2 text-muted"
@@ -333,23 +333,11 @@
                         <h1 class="px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg dark:text-black">
                             دانشگاه شهید امینی
                         </h1>
-                        <div class="md:block relative" x-data="{lang: false}">
-                            <div x-on:click="lang = !lang"
-                                class="bg-red-200 py-1 space-x-4 px-3 pl-7 text-sm rounded-xl dark:text-black"> فارسی - fa </div>
-                            <ul class="absolute -top-20 left-0 rounded-xl bg-red-200 min-w-28 text-sm dark:text-black" x-show="lang" x-transition.origin.bottom @click.outside="lang=false">
-                                <li class="p-2 hover:text-blue-600 dark:hover:text-blue-600 transition-all duration-200 ease-linear hover:mr-2"><a href="#">
-                                    فارسی - fa
-                                </a></li>
-                                <li class="p-2 hover:text-blue-600 dark:hover:text-blue-600 transition-all duration-200 ease-linear hover:mr-2"><a href="#">
-                                    انگلیسی - en
-                                </a></li>
-                            </ul>
-                            <svg class="absolute top-1 left-1 text-black pointer-events-none h-4 w-4" viewBox="0 0 16 16"
-                                fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
+                        <div class="">
+                            <select class="text-sm px-2 py-1 bg-red-200 rounded-xl ml-2 shadow-lg dark:text-black" id="" name="state">
+                                <option value="fa" class="bg-white">فارسی</option>
+                                <option value="en" class="bg-white">انگلیسی</option>
+                            </select>
                         </div>
                     </div>
                     <!-- <span class="text-xs text-center">
@@ -407,23 +395,14 @@
                     </div>
                     <!-- End sign up / login in mobile mode -->
 
-                    <div class="hidden md:block relative" x-data="{lang: false}">
-                        <span x-on:click="lang = !lang"
-                            class="bg-slate-200 py-3 space-x-4 px-3 pl-7 text-xs rounded-xl focus:outline-none"> فارسی - fa </span>
-                        <ul class="absolute top-10 rounded-xl bg-slate-200 min-w-28 text-sm" x-show="lang" x-transition.origin.top @click.outside="lang=false">
-                            <li class="p-2 hover:text-blue-600 dark:hover:text-blue-600 transition-all duration-200 ease-linear hover:mr-2"><a href="#">
-                                فارسی - fa
-                            </a></li>
-                            <li class="p-2 hover:text-blue-600 dark:hover:text-blue-600 transition-all duration-200 ease-linear hover:mr-2"><a href="#">
-                                انگلیسی - en
-                            </a></li>
-                        </ul>
-                        <svg class="absolute top-1 left-2 pointer-events-none h-4 w-4" viewBox="0 0 16 16"
-                            fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-                                clip-rule="evenodd"></path>
-                        </svg>
+                    <div class="hidden md:block">
+                        <svg class="pointer-events-none z-10 left-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+                          </svg>
+                        <select class="appearance-none bg-slate-200 py-3 px-3 pl-6 text-xs rounded-xl" id="lang" name="state">
+                            <option value="fa">فارسی</option>
+                            <option value="en">انگلیسی</option>
+                        </select>
                     </div>
                     <div class="hidden md:flex">
                         <a href="#"
@@ -1853,7 +1832,7 @@
                         </li>
                     </ul>
                 </div>
-
+                
                 <div class="md:col-span-3">
                     <div class="relative flex md:items-start md:mx-0  mx-auto w-fit items-center">
                         <h3 class="text-xl relative font-bold dark:tew dark:text-white text-biscay-700 mb-4 z-10">
