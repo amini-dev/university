@@ -1,8 +1,3 @@
-jQuery(function () {
-    $("#lang").select2();
-    $("#mobile_lang").select2();
-});
-
 // change theme dark and light
 const themeSwitcher = document.querySelectorAll(".mobile__theme-switcher");
 themeSwitcher.forEach((button) => {
