@@ -2,6 +2,7 @@
 @font-face {
     font-family: irYekan;
     font-style: normal;
+    font-display: swap;
     src: url("../fonts/IranYekan/woff/IRANYekanXVF.woff") format("woff");
 }
 
@@ -9,21 +10,21 @@
     font-family: "Font Awesome 6 Pro";
     font-style: normal;
     font-weight: 400;
-    font-display: block;
+    font-display: swap;
     src: url("../fonts/fontAwesome/fa-regular-400.woff2") format("woff2"),
 }
 @font-face {
     font-family: "Font Awesome 6 Pro";
     font-style: normal;
     font-weight: 300;
-    font-display: block;
+    font-display: swap;
     src: url("../fonts/fontAwesome/fa-light-300.woff2") format("woff2"),
 }
 @font-face {
     font-family: "Font Awesome 6 Pro";
     font-style: normal;
     font-weight: 100;
-    font-display: block;
+    font-display: swap;
     src: url("../fonts/fontAwesome/fa-thin-100.woff2") format("woff2"),
 }
 
